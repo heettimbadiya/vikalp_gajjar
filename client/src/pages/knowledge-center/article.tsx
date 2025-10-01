@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowLeft, Clock, User, Share2 } from "lucide-react";
 import { Link } from "wouter";
 import { articles } from "../../data/articles.ts";
+import { fetchApi } from "@/lib/utils";
 
 interface Article {
   slug: string;
@@ -35,11 +36,8 @@ export default function ArticleDetailPage() {
   useEffect(() => {
     const fetchArticle = async () => {
       try {
-        const response = await fetch(`/api/articles/${articleSlug}`);
-        if (!response.ok) {
-          throw new Error('Article not found');
-        }
-        const apiData: ApiResponse = await response.json();
+        const apiData: ApiResponse = await fetchApi(`/api/articles/${articleSlug}`);
+        
         setArticle(apiData.article);
 
         // Inject JSON-LD structured data into page head

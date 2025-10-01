@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
+import { fetchApi } from '@/lib/utils';
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -26,10 +27,7 @@ export default function RecommendedCarousel({ currentSlug, limit = 6 }: Recommen
   useEffect(() => {
     const fetchRecommendedProducts = async () => {
       try {
-        const response = await fetch('/api/products');
-        if (!response.ok) throw new Error('Failed to fetch products');
-        
-        const allProducts: Product[] = await response.json();
+        const allProducts: Product[] = await fetchApi('/api/products');
         const currentProduct = allProducts.find(p => p.slug === currentSlug);
         
         if (!currentProduct) {

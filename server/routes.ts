@@ -219,7 +219,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // All products API endpoint for navigation - register first to avoid conflicts
   app.get("/api/menu-products", async (req, res) => {
     try {
-      const { products } = await import("../data/products");
+      const { products } = await import("./data/products.ts");
       res.json({ products });
     } catch (error) {
       console.error('Error fetching products:', error);
@@ -597,7 +597,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       }
 
       // Import products from data file since storage uses database models
-      const { products } = await import("../data/products");
+      const { products } = await import("./data/products");
       const product = products.find(p => p.slug === slug);
       
       if (!product) {

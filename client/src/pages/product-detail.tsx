@@ -1,5 +1,6 @@
 import { useParams, useLocation } from "wouter";
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
+import { fetchApi } from '@/lib/utils';
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -191,13 +192,8 @@ export default function ProductDetailPage() {
     const fetchProductData = async () => {
       try {
         setLoading(true);
-        const response = await fetch(`/api/products/${slug}`);
+        const apiData: ApiResponse = await fetchApi(`/api/products/${slug}`);
         
-        if (!response.ok) {
-          throw new Error('Product not found');
-        }
-        
-        const apiData: ApiResponse = await response.json();
         setData(apiData);
         
         // Set page title and meta description with product name

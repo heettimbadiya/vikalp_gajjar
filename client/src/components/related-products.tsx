@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
+import { fetchApi } from '@/lib/utils';
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -27,8 +28,7 @@ export default function RelatedProducts({ currentProductId, currentCategory }: R
   useEffect(() => {
     const fetchRelatedProducts = async () => {
       try {
-        const response = await fetch('/api/products');
-        const allProducts: Product[] = await response.json();
+        const allProducts: Product[] = await fetchApi('/api/products');
         
         // Logic for finding related products
         const related = findRelatedProducts(allProducts, currentProductId, currentCategory);

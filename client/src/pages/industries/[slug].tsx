@@ -1,6 +1,7 @@
 import { useParams, Link } from 'wouter';
 import { useQuery } from '@tanstack/react-query';
 import { useEffect } from 'react';
+import { fetchApi } from '@/lib/utils';
 
 interface Industry {
   id: string;
@@ -19,11 +20,7 @@ export default function IndustryPage() {
     queryKey: ['/api/industries'],
     queryFn: async () => {
       try {
-        const response = await fetch('/api/industries');
-        if (!response.ok) {
-          throw new Error('Failed to fetch industries');
-        }
-        const data = await response.json();
+        const data = await fetchApi('/api/industries');
         return Array.isArray(data) ? data : [];
       } catch (error) {
         console.error('Industries fetch error:', error);

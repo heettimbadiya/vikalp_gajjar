@@ -12,11 +12,18 @@ export interface GraphQLResponse<T = any> {
   }>;
 }
 
+import { getApiUrl } from "./utils";
+
 export async function graphqlRequest<T = any>(
   endpoint: string,
   { query, variables }: GraphQLQuery
 ): Promise<GraphQLResponse<T>> {
-  const response = await fetch(endpoint, {
+  // Use the getApiUrl function to get the full API URL
+  const url = endpoint.startsWith('/') || endpoint.startsWith('api/') 
+    ? getApiUrl(endpoint)
+    : endpoint;
+    
+  const response = await fetch(url, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

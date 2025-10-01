@@ -8,6 +8,7 @@ import Header from "@/components/header";
 import Footer from "@/components/footer";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { apiRequest } from "@/lib/queryClient";
+import { fetchApi, getApiUrl } from "@/lib/utils";
 
 interface Lead {
   id: number;
@@ -47,9 +48,7 @@ export default function Dashboard() {
   const { data: recentLeads } = useQuery({
     queryKey: ['/api/leads/recent'],
     queryFn: async () => {
-      const response = await fetch('/api/leads/recent');
-      if (!response.ok) throw new Error('Failed to fetch recent leads');
-      return response.json();
+      return fetchApi('/api/leads/recent');
     },
     refetchInterval: 5000, // Poll every 5 seconds
   });
@@ -57,7 +56,8 @@ export default function Dashboard() {
   // Semantic search mutation
   const semanticSearch = useMutation({
     mutationFn: async (query: string) => {
-      const response = await fetch('/api/graphql', {
+      const url = getApiUrl('/api/graphql');
+      const response = await fetch(url, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

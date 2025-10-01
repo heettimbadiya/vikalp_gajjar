@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
+import { fetchApi } from '@/lib/utils';
 import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Phone, ChevronDown } from "lucide-react";
@@ -24,8 +25,7 @@ export default function Header() {
   useEffect(() => {
     const fetchProductsAndBuildMenu = async () => {
       try {
-        const response = await fetch('/api/menu-products');
-        const data = await response.json();
+        const data = await fetchApi('/api/menu-products');
         
         if (data.products) {
           const categories = organizeProductsIntoCategories(data.products);

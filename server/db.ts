@@ -1,5 +1,3 @@
-// Mock database for development
-import * as schema from "./shared/schema";
 
 // Create a mock database interface for development
 export const db = {

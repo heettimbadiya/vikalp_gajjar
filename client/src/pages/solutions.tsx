@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'wouter';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+import { fetchApi, getApiUrl } from '@/lib/utils';
 
 interface Industry {
   id: string;
@@ -22,11 +23,7 @@ export default function SolutionsPage() {
     queryKey: ['/api/industries'],
     queryFn: async () => {
       try {
-        const response = await fetch('/api/industries');
-        if (!response.ok) {
-          throw new Error('Failed to fetch industries');
-        }
-        const data = await response.json();
+        const data = await fetchApi('/api/industries');
         return Array.isArray(data) ? data : [];
       } catch (error) {
         console.error('Industries fetch error:', error);
@@ -42,7 +39,8 @@ export default function SolutionsPage() {
       formData.append('image', file);
       formData.append('industryId', industryId);
       
-      const response = await fetch('/api/upload-industry-image', {
+      const url = getApiUrl('/api/upload-industry-image');
+      const response = await fetch(url, {
         method: 'POST',
         body: formData,
       });
