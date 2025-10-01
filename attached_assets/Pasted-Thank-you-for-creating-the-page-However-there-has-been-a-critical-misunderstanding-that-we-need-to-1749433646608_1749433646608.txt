@@ -1,0 +1,79 @@
+Thank you for creating the page. However, there has been a critical misunderstanding that we need to fix immediately.
+'Single Toggle Jaw Crusher' and 'Double Toggle Jaw Crusher' are two separate, distinct products. They must each have their own individual product page. Combining them onto a single page with a short table is incorrect and confuses the customer.
+Our goal is to have two unique URLs:
+ * /products/double-toggle-jaw-crusher (showing a detailed table with many models)
+ * /products/single-toggle-jaw-crusher (showing a simpler summary table)
+The problem is in your data model. Your immediate task is to correct this.
+Your Task: Correct the Product Data and Verify the Pages
+Step 1: Correct the Product Data Model (/data/products.ts)
+Go to your data/products.ts file.
+ * Delete any existing, combined "Jaw Crusher" object.
+ * Add the following two NEW, SEPARATE product objects to your products array. I am providing the exact data you need to use. This data includes the detailed multi-model table for the "Double Toggle" crusher that you must use.
+Product 1: Double Toggle Jaw Crusher (Detailed View)
+{
+  id: 1, // Make sure ID is unique
+  slug: "double-toggle-jaw-crusher",
+  name: "Double Toggle Jaw Crusher",
+  category: "Crushers",
+  image: "/images/products/double-toggle-jaw-crusher.jpg",
+  description: "The Double Toggle Jaw Crusher is engineered for the most demanding primary crushing applications. Its unique double-toggle mechanism provides maximum leverage to crush the hardest and most abrasive materials with minimal wear on the jaw plates, ensuring long-term reliability and performance in major quarrying and mining operations.",
+  benefits: [
+    "Superior performance on hard & abrasive rock",
+    "Reduced wear on jaw plates",
+    "Consistent and cubical product shape",
+    "Extremely robust and reliable construction"
+  ],
+  applications: [
+    "Primary crushing for Granite and Basalt",
+    "Mining Operations (Iron, Bauxite)",
+    "High-capacity Quarries"
+  ],
+  disclaimer: "Specifications are subject to change without notice. All data is approximate and indicative; performance depends on site conditions.",
+  spec_models: [
+    { Size: '16 x 09', 'Size (mm)': '400 x 225', 'Max Feed (mm)': 175, 'Capacity (TPH)': '12-20', 'Power (HP)': '20-30' },
+    { Size: '20 x 12', 'Size (mm)': '500 x 300', 'Max Feed (mm)': 250, 'Capacity (TPH)': '16-40', 'Power (HP)': '25-40' },
+    { Size: '24 x 12', 'Size (mm)': '600 x 300', 'Max Feed (mm)': 300, 'Capacity (TPH)': '25-60', 'Power (HP)': '30-45' },
+    { Size: '30 x 15', 'Size (mm)': '750 x 375', 'Max Feed (mm)': 325, 'Capacity (TPH)': '28-85', 'Power (HP)': '35-50' },
+    { Size: '36 x 24', 'Size (mm)': '900 x 600', 'Max Feed (mm)': 500, 'Capacity (TPH)': '35-125', 'Power (HP)': '80-100' },
+    { Size: '42 x 30', 'Size (mm)': '1050 x 750', 'Max Feed (mm)': 600, 'Capacity (TPH)': '42-200', 'Power (HP)': '120-150' },
+    { Size: '48 x 36', 'Size (mm)': '1200 x 900', 'Max Feed (mm)': 725, 'Capacity (TPH)': '48-275', 'Power (HP)': '150-200' }
+  ]
+}
+
+Product 2: Single Toggle Jaw Crusher (Summary View)
+{
+  id: 2, // Make sure ID is unique
+  slug: "single-toggle-jaw-crusher",
+  name: "Single Toggle Jaw Crusher",
+  category: "Crushers",
+  image: "/images/products/single-toggle-jaw-crusher.jpg",
+  description: "Our Single Toggle Jaw Crusher is a versatile and cost-effective solution for primary crushing in a wide range of applications. It offers high throughput and a simple, robust design for easy maintenance and reliable operation.",
+  benefits: [
+    "High throughput and efficiency",
+    "Simple design for easy maintenance",
+    "Versatile for various applications",
+    "Cost-effective crushing solution"
+  ],
+  applications: [
+    "Contract Crushing",
+    "Recycling (Concrete, Asphalt)",
+    "Small to Medium Quarries"
+  ],
+  disclaimer: "Specifications are subject to change without notice. Performance depends on site conditions.",
+  spec_table: [
+      { name: 'Size Range', value: 'From 16x9 to 48x36 inches' },
+      { name: 'Max Feed Size', value: 'Up to 725 mm' },
+      { name: 'Capacity (TPH)', value: 'Up to 275 TPH' },
+      { name: 'Key Feature', value: 'High performance with lower capital investment' }
+  ]
+}
+
+Step 2: Verify the Frontend Pages
+Your existing dynamic page at app/products/[slug]/page.tsx should now work correctly with this new data. You do not need to change the code on that page.
+Action: Please verify the following:
+ * Navigating to /products/double-toggle-jaw-crusher must display the page for the "Double Toggle" crusher with the large, detailed multi-model specification table.
+ * Navigating to /products/single-toggle-jaw-crusher must display the page for the "Single Toggle" crusher with the smaller, simpler key-value specification table.
+Step 3: Update Homepage Links
+Finally, ensure that if you are featuring a jaw crusher on the homepage, the link points to the correct, specific URL (e.g., /products/double-toggle-jaw-crusher), not a generic one.
+Your Deliverable:
+Please confirm that you have updated the data model as instructed and that both jaw crusher pages are now displaying correctly and separately.

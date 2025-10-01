@@ -1,0 +1,106 @@
+Prompt for Replit AI Agent
+
+# ─────────────────────────────────────────────
+# VTIS Industrial — feature/ai-seo-upgrade
+# ─────────────────────────────────────────────
+
+OBJECTIVE  
+Upgrade the **Single Toggle Jaw Crusher** template so it is simultaneously  
+(1) AI-search ready and (2) a better buyer experience, **without** changing the
+React (+ Vite) frontend or Express backend stack.
+
+─────────────────────────────────────────────
+0. PRE-FLIGHT
+• `git switch -c feature/ai-seo-upgrade`  
+• Keep the build green after every major commit  
+  `pnpm run build && pnpm test`
+
+─────────────────────────────────────────────
+1. STRUCTURED-DATA LAYER
+
+| Task | Acceptance test |
+|------|-----------------|
+| **1.1** Create `components/seo/ProductSchema.tsx` that returns a `<script type="application/ld+json">`. <br>• Props: **typed `Product`**.<br>• Conform to GS1/Schema.org **Product v26** with extra keys:<br>`isAccessoryOrSparePartFor, audience, material, gtin, inProductGroupWithID, image, brand, sku, url, offers` | Open Rich-Results Test → Product node validates, no errors/warnings. |
+| **1.2** Under the “Applications / FAQ” section render **TechArticle** + **FAQPage** schemas via new `components/seo/ProductFaqSchema.tsx`. | Rich-Results Test shows both TechArticle and FAQPage nodes, 0 errors. |
+
+─────────────────────────────────────────────
+2. AI-CRAWLER FEEDS
+1. Create `/public/llm.txt` — **one line per product**  
+   `https://site.tld/products/<slug>|<ISO-date>|capacity=350TPH;power=125HP`  
+2. Update `public/robots.txt` →  
+
+Allow: /llm.txt
+Sitemap: /sitemap.xml
+
+3. Add `scripts/gen-llm-feed.ts` (run in **postbuild**) that regenerates `llm.txt`.
+
+─────────────────────────────────────────────
+3. UI / UX ENHANCEMENTS
+
+| Component | Location | Key details |
+|-----------|----------|-------------|
+| **StickySummaryBar.tsx** | `/components/ui/` | Appears after 25 % scroll; `position:sticky;top:0`; `backdrop-blur`. Shows model name · max capacity · CTA. |
+| **AnchorNav.tsx** | top of product page | Tabs: Overview · Specs · Benefits · FAQ · Downloads (use **wouter** hash links). |
+| **SpecsTable v2** | replace current table | Props: `data, showMetric, capacityGte`. Sync with URL params `?metric=false&capacity_gte=150`. Metric/Imperial toggle top-right. |
+| **PdfBadge.tsx** | under `<h1>` | “📄 Download PDF Spec Sheet” → `/pdf/<slug>.pdf`. Stub PDF built by `scripts/build-pdf.ts` using **@react-pdf/renderer** (basic styling OK). |
+| **MiniFaqAccordion.tsx** | above “Ready to Learn More” | 3 Q&A items (see FAQ copy). Uses **Radix UI Accordion**. |
+
+─────────────────────────────────────────────
+4. ASSET & PERF QUICK-WINS
+1. Convert hero image → **AVIF** with `<picture>` fallback.  
+2. Pre-load Inter var subset  
+```html
+<link rel="preload" href="/fonts/Inter-var-latin.woff2"
+      as="font" type="font/woff2" crossorigin>
+
+	3.	Replace import * as Icons from 'lucide-react' with named imports.
+
+─────────────────────────────────────────────
+5. BACKEND RAG-READINESS ( stretch )
+
+// drizzle trigger
+const vector = await openai.embeddings.create({
+  model: 'text-embedding-ada-002',
+  input: product.description,
+});
+await db.update(products).set({ embedding: vector.data });
+
+• Expose GET /api/semantic-search?q=<term>&topK=5 (pgvector cosine match).
+Leave TODO comments if time-boxed.
+
+─────────────────────────────────────────────
+6. COPY BLOCKS (paste verbatim)
+
+Hero tagline
+
+Crush 350 t/h of basalt with one moving jaw.
+VTIS Prime Single-Toggle brings big-plant performance to contract fleets.
+
+Meta description (≤ 155 chars)
+
+Primary jaw crusher for aggregates & recycling. Up to 350 TPH, 800 mm feed, low wear, plug-and-run.
+
+FAQ (3 items)
+
+### FAQ (3 items — product-level, not model-specific)
+
+Q: What materials can this crusher handle?  
+A: From hard granite (300 MPa) to recycled concrete; the deep-V chamber prevents bridging.  
+
+Q: Can I run this crusher inside a fully electric train?  
+A: Yes. The 110 kW main drive is VFD-ready and draws < 140 A at 400 V ± 10 %, meeting IEC 60034 Class F rise.  
+
+Q: Is remote condition monitoring available?  
+A: An optional IoT gateway streams bearing temps, stroke count, and kWh / tonne to our cloud API; alerts integrate with Slack, Teams, or OPC-UA.
+
+─────────────────────────────────────────────
+7. DEFINITION OF DONE
+✓ Page renders with no new lint errors and passes pnpm run test.
+✓ CWV audit (npm run lighthouse mobile) → LCP < 2.5 s, INP < 200 ms, CLS < 0.1.
+✓ Rich-Results Test green for Product + FAQ + TechArticle.
+✓ Visiting /llm.txt lists every product.
+✓ Sticky summary bar & anchor nav work on desktop and mobile.
+
+─────────────────────────────────────────────
+⏱ Time-box: 2 hrs.  Commit granularly; leave TODOs for stretch work if needed.
+

@@ -1,0 +1,150 @@
+{
+  "project_analysis": {
+    "scan_date": "2025-07-25",
+    "total_project_size": "706MB",
+    "breakdown": {
+      "top_level_directories": {
+        "node_modules": "518MB",
+        "public": "140MB", 
+        "attached_assets": "47MB",
+        "client": "760KB",
+        "dist": "588KB",
+        "data": "72KB",
+        "server": "56KB",
+        "content": "48KB",
+        "tests": "32KB",
+        "scripts": "28KB",
+        "locales": "8KB",
+        "shared": "4KB"
+      },
+      "public_assets_breakdown": {
+        "media": "73MB",
+        "images": "68MB",
+        "icons": "20KB",
+        "robots.txt": "4KB",
+        "llm.txt": "4KB"
+      },
+      "built_bundles": {
+        "main_js_bundle": "471.20KB (130.43KB gzipped)",
+        "main_css_bundle": "115.66KB (18.23KB gzipped)",
+        "server_bundle": "60.4KB",
+        "html_index": "7.09KB (2.10KB gzipped)",
+        "faq_chunks": {
+          "feeder.faq": "2.26KB (1.06KB gzipped)",
+          "screw-sand-washers.faq": "2.32KB (1.07KB gzipped)",
+          "single-toggle-jaw-crusher.faq": "0.50KB (0.37KB gzipped)",
+          "hsi-impactors.faq": "0.44KB (0.32KB gzipped)",
+          "double-toggle-jaw-crusher.faq": "0.43KB (0.33KB gzipped)",
+          "inclined-vibrating-screens.faq": "0.41KB (0.32KB gzipped)",
+          "grizzly-screens.faq": "0.38KB (0.30KB gzipped)",
+          "conveyor-systems.faq": "0.36KB (0.28KB gzipped)",
+          "hydrocyclone-sand-classifiers.faq": "0.35KB (0.28KB gzipped)",
+          "mobile-crushing-plant.faq": "0.35KB (0.28KB gzipped)",
+          "vsi-cubisand-sand-maker.faq": "0.33KB (0.27KB gzipped)",
+          "bucket-sand-classifiers.faq": "0.33KB (0.27KB gzipped)"
+        }
+      },
+      "heaviest_individual_files": [
+        {
+          "file": "public/media/about/Overview.mp4",
+          "size": "48MB",
+          "type": "video"
+        },
+        {
+          "file": "attached_assets/DJI_0079_1751546320071.mp4",
+          "size": "45MB",
+          "type": "video"
+        },
+        {
+          "file": "public/images/solutions/turnkey-solutions.jpg",
+          "size": "8.6MB",
+          "type": "image"
+        },
+        {
+          "file": "public/images/products/turnkey-solutions.jpg",
+          "size": "8.6MB",
+          "type": "image"
+        },
+        {
+          "file": "public/media/solutions/turnkey/overview.mp4",
+          "size": "8.5MB",
+          "type": "video"
+        },
+        {
+          "file": "public/media/solutions/turnkey/intro.mp4",
+          "size": "8.5MB",
+          "type": "video"
+        },
+        {
+          "file": "public/media/home/Intro.mov",
+          "size": "8.5MB",
+          "type": "video"
+        },
+        {
+          "file": "public/images/products/Conveyor Systems.jpeg",
+          "size": "8.2MB",
+          "type": "image"
+        },
+        {
+          "file": "public/images/products/belt-conveyors.jpg",
+          "size": "8.2MB",
+          "type": "image"
+        },
+        {
+          "file": "public/images/solutions/C&D Recycling",
+          "size": "7.3MB",
+          "type": "image"
+        },
+        {
+          "file": "public/images/products/bucket-elevators.jpg",
+          "size": "7.3MB",
+          "type": "image"
+        },
+        {
+          "file": "public/images/solutions/SandWashing&MSang.jpeg",
+          "size": "4.4MB",
+          "type": "image"
+        },
+        {
+          "file": "public/images/solutions/cd-recycling.jpg",
+          "size": "2.1MB",
+          "type": "image"
+        },
+        {
+          "file": "public/images/products/single-toggle-jaw-crusher.jpg",
+          "size": "2.1MB",
+          "type": "image"
+        },
+        {
+          "file": "public/images/products/inclined-vibrating-screens.jpg",
+          "size": "2.1MB",
+          "type": "image"
+        },
+        {
+          "file": "public/images/products/Vibrating Feeders.png",
+          "size": "1.1MB",
+          "type": "image"
+        }
+      ],
+      "optimization_recommendations": {
+        "critical_issues": [
+          "48MB Overview.mp4 video needs compression",
+          "8.6MB turnkey solution images need optimization",
+          "8.2MB conveyor system images need compression",
+          "7.3MB C&D Recycling and bucket elevator images oversized"
+        ],
+        "bundle_health": {
+          "main_js_bundle": "Good - 471KB is reasonable for feature set",
+          "css_bundle": "Excellent - 115KB well optimized",
+          "gzip_compression": "Excellent - 72% compression ratio",
+          "code_splitting": "Good - FAQ chunks properly separated"
+        },
+        "estimated_savings": {
+          "image_optimization": "~80MB (50-70% reduction possible)",
+          "video_compression": "~35MB (70% reduction possible)",
+          "total_potential_savings": "~115MB"
+        }
+      }
+    }
+  }
+}

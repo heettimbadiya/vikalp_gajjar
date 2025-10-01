@@ -1,0 +1,94 @@
+📄 Prompt for Replit AI Agent – “Specs-Table Slim-Down + Multi-FAQ + WWDC ’26 polish”
+
+⸻
+
+0 · Pre-Flight
+	•	Branch from main → feature/specs-faq-wwdc26
+	•	Keep build green (pnpm run build && pnpm test) after each major commit.
+
+⸻
+
+1 · Specs Table – Simplify
+
+Task	Acceptance Test
+1.1 Remove Unit Toggle — delete Metric ⇄ Imperial switch & related URL param logic from components/ui/SpecsTableV2.tsx.Keep only the values in original engineering units already stored in CMS.	Spec table renders w/out toggle; no JS errors.
+1.2 Drop “Min-Capacity” Filter — strip <input id="capacity-filter"> + state.	No blank header space; Lighthouse sees < 25 KB unused JS ↓.
+1.3 Rename to SpecsTable.tsx and export from /index.ts. Update imports site-wide.	pnpm typecheck passes.
+
+
+⸻
+
+2 · Per-Product FAQ Sets
+
+Create content/faq/<slug>.faq.ts files (typed array of {q, a}) for all 10 products below.
+Each product gets 3 high-intent Q & A (≈ 280 chars answer max) written for both human buyers & LLM crawlers.
+
+Slug	FAQ (copy below)	File
+single-toggle-jaw-crusher	F1 – F3	single-toggle-jaw-crusher.faq.ts
+double-toggle-jaw-crusher	F4 – F6	double-toggle-jaw-crusher.faq.ts
+cone-crushers	F7 – F9	…
+hsi-impactors	F10 – F12	…
+inclined-vibrating-screens	F13 – F15	…
+grizzly-screens	F16 – F18	…
+bucket-sand-classifiers	F19 – F21	…
+hydrocyclone-sand-classifiers	F22 – F24	…
+vsi-cubisand-sand-maker	F25 – F27	…
+mobile-crushing-plant	F28 – F30	…
+
+Then:
+	•	2.1 FAQ Loader — new hook useFaq(slug) that lazy-imports the correct file.
+	•	2.2 MiniFaqAccordion — consume hook; render only if array length > 0.
+	•	2.3 Schema — ProductFaqSchema.tsx now maps imported Q&A to JSON-LD.
+
+Copy: FAQs F1-F30
+
+F1 Q: What materials can the crusher process efficiently?  
+   A: Anything up to 300 MPa—basalt, granite, and C&D waste—thanks to the deep-V chamber and 110 kW flywheel.
+
+F2 Q: How fast can I swap jaw plates on-site?  
+   A: Two technicians, one impact gun: < 45 min with our slide-out seat and captive wedge design.
+
+F3 Q: Can I integrate remote condition monitoring?  
+   A: Yes—optional IoT gateway streams bearing temp & kWh/t via MQTT or OPC-UA.
+
+F4 Q: Why pick a double-toggle over single?  
+    A: Higher nip angle & longer stroke double peak force; best for 400 MPa iron ore.
+
+F5 Q: Typical pitman life cycle?  
+    A: Over 20k hours with our alloy steel + stress-relief heat treatment.
+
+F6 Q: Does it ship container-ready?  
+    A: Breaks into three ISO-20' modules, no oversize permits.
+
+… _(continue pattern up to F30 — keep each concise)_ …
+
+(Full copy in /docs/faqs.md; agent to paste into TS files.)
+
+⸻
+
+3 · UI Polish – Inspired by WWDC ’26 Micro-Trends
+
+Full implementation optional; add TODO: if time-boxed.
+
+WWDC ’26 Idea	Minimal Adoption for Us	Note
+Dynamic Tint — Safari 18 auto-tints top bars to prominent brand color.	Add <meta name="theme-color" content="#0A60FF">.	Zero JS.
+Spatial Depth Tokens (new depth-1/2/3 shadow presets).	Update Tailwind config → theme.extend.boxShadow. Use only on sticky summary bar & cards.	
+SF Pro Round subtitling for captions.	font-face preload weight 400 italic; use in figcaption.	
+Live Text Drag-out	Ensure hero images have crisp text contrast; no code change.	
+
+All suggestions are non-breaking; do not add extra build deps.
+
+⸻
+
+4 · Deliverables / DoD
+	•	Build & unit tests pass.
+	•	Every product page shows its own FAQ; JSON-LD validates.
+	•	Specs table simplified; no metric toggle nor capacity filter remnants.
+	•	No CLS regression (≤ 0.05) after shadow tweaks.
+	•	PR description lists which WWDC-trend tokens were actually applied.
+
+⸻
+
+Start from §1, work top-to-bottom.
+Leave // TODO(pg-vector) notes untouched.
+Ping #web-team when the PR is ready for QA.

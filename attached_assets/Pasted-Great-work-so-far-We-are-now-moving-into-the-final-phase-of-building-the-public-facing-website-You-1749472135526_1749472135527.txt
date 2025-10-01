@@ -1,0 +1,41 @@
+Great work so far. We are now moving into the final phase of building the public-facing website. Your next set of tasks is to build out the complete site structure by adding the remaining core pages, and then enhance our product pages with advanced, interactive features to maximize user engagement.
+Part 1: Complete the Core Site Structure (from Option 1)
+Your first priority is to build the main navigational pages that visitors expect to see.
+1.A: Build the Main Product Catalog Page (/products)
+ * Goal: Create the central hub where users can browse and filter our entire equipment range.
+ * Actions:
+   * Create a new page at the URL /products.
+   * Fetch the list of all 8 products from our API (/api/products).
+   * Display the products in a clean, responsive grid using your ProductCard component.
+   * At the top of the page, add filter buttons for "All," "Crushers," "Screening," and "Washing." Implement the client-side logic to filter the product grid when a user clicks these buttons.
+1.B: Build the "About Us" & "Solutions" Pages
+ * Goal: Establish brand trust and showcase our industry expertise.
+ * Actions:
+   * Create the /about page using the blueprint we discussed previously (Hero, Our Story, Mission/Vision, Our Facility).
+   * Create the /solutions landing page, which will act as a directory. It should feature cards for key industries like "Mining," "Construction & Aggregates," and "Recycling," which will later link to detailed industry-specific pages.
+Part 2: Enhance Product Page Engagement (from Option 3)
+Now that the site structure is complete, you will enhance the product detail page template (app/products/[slug]/page.tsx) with the following features.
+2.A: Implement the "Intelligent Model Assistant"
+ * Goal: Help users find the right equipment model based on their needs.
+ * Actions:
+   * On product pages that have a detailed spec_models table (like the Jaw Crushers), add a new component above the table titled "Find Your Perfect Model."
+   * This component will have input fields for key specifications (e.g., "Required Capacity (TPH)," "Max Feed Size (mm)").
+   * When the user clicks a "Find My Model" button, use client-side logic to filter the specification table below, visually highlighting the rows that match the user's criteria (e.g., with a different background color).
+2.B: Add Image & Video Galleries
+ * Goal: Provide rich visual context for our products.
+ * Actions:
+   * First, update the product data structure (and the Sanity.io schema, if integrated) to include an array for gallery images (galleryImages: string[]) and an optional field for a video URL (videoUrl?: string).
+   * On the product detail page, replace the single product image with a proper gallery component, showing a main image with clickable thumbnails below it.
+   * If a videoUrl exists for a product, display an embedded video player (e.g., from YouTube or Vimeo) in a dedicated section.
+2.C: Add the "Related Products" Component
+ * Goal: Encourage further site exploration and show how our products work together.
+ * Actions:
+   * At the bottom of the product detail page, create a new component called RelatedProducts.
+   * This component should display 2-3 other logically related products. For example, a "Crusher" page should recommend a "Vibrating Feeder" and a "Conveyor."
+   * Display these related products as small cards, linking to their respective detail pages.
+Your Deliverable:
+This is a comprehensive task. Please confirm when the following are complete:
+ * The /products catalog page is built and the category filters are functional.
+ * The /about and /solutions pages have been created.
+ * The "Intelligent Model Assistant" is implemented and working on the Jaw Crusher page.
+ * The product detail page template is updated to support an image gallery and a "Related Products" section.

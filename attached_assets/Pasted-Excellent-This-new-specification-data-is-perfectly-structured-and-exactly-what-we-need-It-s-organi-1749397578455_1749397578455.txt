@@ -1,0 +1,95 @@
+Excellent. This new specification data is perfectly structured and exactly what we need. It's organized by model number, which is ideal for creating clear, detailed product pages.
+Now that the high-conversion homepage is designed, our next critical step is to make the product links on that page functional by building the individual product detail pages. We will use this new data to create pages that are not only informative but also designed to convert visitors into leads.
+Here is the prompt for the Replit agent. It outlines a template for a high-conversion product page and instructs the agent on how to integrate your new data.
+Prompt for Replit Agent: Build High-Conversion Product Pages
+To Replit Agent:
+Fantastic work. With the homepage blueprint established, we will now build the destination for the "View Details" links: the individual product detail pages.
+We have new, finalized specification data. Your task is to use this data to create a comprehensive and persuasive product page template.
+Step 1: Update the Product Data Model
+First, you must update your data file (/data/products.ts) with the new, accurate information. The new data is structured with specific models for each product, which is perfect.
+Action: Replace the old product data with the new data, using the following structure. I have provided the "Jaw Crushers" and "Inclined Vibrating Screens" as complete examples.
+// In /data/products.ts
+
+export interface Product {
+  id: number;
+  slug: string;
+  name: string; // e.g., "Jaw Crushers (VTIS Series)"
+  category: string; // e.g., "Crushers"
+  image: string; // e.g., "/images/products/jaw-crusher.jpg"
+  description: string;
+  benefits: string[];
+  applications: string[];
+  spec_models: Record<string, string | number>[];
+}
+
+export const products: Product[] = [
+  {
+    id: 1,
+    slug: "jaw-crushers-vtis-series",
+    name: "Jaw Crushers (VTIS Series)",
+    category: "Crushers",
+    image: "/images/products/jaw-crusher.jpg",
+    description: "Our VTIS Series Jaw Crushers are the cornerstone of primary crushing operations, engineered for maximum uptime and reliability in the most demanding environments. They provide exceptional performance in processing hard, abrasive rock and recycling materials.",
+    benefits: [
+      "High throughput capacity",
+      "Robust construction for long life",
+      "Optimized jaw plates for efficient crushing",
+      "Simple maintenance and low operational costs"
+    ],
+    applications: [
+      "Hard Rock Quarries",
+      "Aggregate Production",
+      "Mining Operations",
+      "Demolition & Recycling"
+    ],
+    spec_models: [
+      { Model: 'VTIS 30x20', 'Feed Opening (mm)': '760x500', 'Max Feed Size (mm)': 450, 'Throughput (TPH)': '45–75', 'Motor Power (kW)': 45 },
+      { Model: 'VTIS 36x28', 'Feed Opening (mm)': '900x700', 'Max Feed Size (mm)': 550, 'Throughput (TPH)': '85–130', 'Motor Power (kW)': 75 },
+      { Model: 'VTIS 42x8', 'Feed Opening (mm)': '1050x200', 'Max Feed Size (mm)': 150, 'Throughput (TPH)': '100–150', 'Motor Power (kW)': 55 }
+    ]
+  },
+  {
+    id: 2,
+    slug: "inclined-vibrating-screens",
+    name: "Inclined Vibrating Screens",
+    category: "Screening",
+    image: "/images/products/inclined-screen.jpg",
+    description: "Our high-efficiency Inclined Vibrating Screens are designed for precise material separation and sizing. Built for durability, they are essential for aggregate plants, mining, and recycling facilities to ensure consistent product quality.",
+    benefits: [
+      "Accurate particle size classification",
+      "High screening efficiency",
+      "Durable screen media for long wear life",
+      "Available in multiple deck configurations"
+    ],
+    applications: [
+      "Final Product Sizing",
+      "Scalping and Rip-Rap Separation",
+      "Sand and Gravel Processing"
+    ],
+    spec_models: [
+      { Model: 'VTIS 1', 'Deck Size (mm)': '1200x3000', 'No. of Decks': 2, 'Capacity (TPH)': '60–120', 'Motor Power (kW)': 11 },
+      { Model: 'VTIS 2', 'Deck Size (mm)': '1500x4000', 'No. of Decks': 3, 'Capacity (TPH)': '100–180', 'Motor Power (kW)': 15 },
+      { Model: 'VTIS 3', 'Deck Size (mm)': '1800x4800', 'No. of Decks': 3, 'Capacity (TPH)': '150–250', 'Motor Power (kW)': 22 }
+    ]
+  },
+  // ... Continue this pattern for all 8 product categories provided.
+];
+
+Step 2: Build the Product Detail Page Template
+Now, build out the dynamic route component at app/products/[slug]/page.tsx. This page should use the slug from the URL to find the correct product in your data file and render its information according to the following high-conversion template.
+Page Structure:
+ * Breadcrumbs: At the top, show simple navigation like Home > Products > Jaw Crushers (VTIS Series).
+ * Product Hero Section:
+   * Display the main product name as a large <h1> heading.
+   * Show the main product image on one side and the description text on the other.
+ * Key Features & Applications Section:
+   * Create two columns or a grid.
+   * In one, have a heading "Key Benefits" and display the benefits array as a styled bullet point list.
+   * In the other, have a heading "Common Applications" and display the applications array as a list.
+ * Technical Specifications Section:
+   * Use a clear heading like "Available Models & Specifications."
+   * Render the spec_models data into a clean, responsive, and professionally styled HTML table. The table headers should be generated dynamically from the keys of the first model object.
+ * Call to Action (CTA) Section:
+   * At the bottom of the page, include a prominent section with a headline like "Ready to Boost Your Production?" and a large "Inquire About This Product" button that links to the /contact page.
+Your Deliverable:
+Please implement this page. Once complete, provide the code for app/products/[slug]/page.tsx for review.

@@ -1,0 +1,69 @@
+🔧 Agent Prompt: “Rebuild Solutions Hero & Refresh About Video”
+
+Please implement the following changes — touch only the hero and About-section media, leaving the rest of the Home page intact:
+	1.	Replace the existing “Solutions” hero
+	•	Delete the current hero markup under <section class="bg-blue-600…"> entirely.
+	•	Scaffold a brand-new “Solutions” hero component:
+
+<section class="solutions-hero py-8 bg-gradient-to-r from-blue-700 to-blue-500 text-white">
+  <div class="container mx-auto px-4">
+    <h2 class="text-2xl sm:text-3xl font-bold mb-4 text-center">
+      Explore Our Industry Solutions
+    </h2>
+    <div class="solutions-grid overflow-x-auto snap-x snap-mandatory grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 px-2">
+      {[
+        { name: 'Mining & Aggregates', slug: 'construction' },
+        { name: 'Sand Washing & M-Sand', slug: 'sand-washing-m-sand' },
+        { name: 'Mobile & Modular Plants', slug: 'mobile-modular-plants' },
+        { name: 'C&D Recycling', slug: 'c-and-d-recycling' },
+      ].map(sol => (
+        <a
+          key={sol.slug}
+          href={`/solutions/${sol.slug}`}
+          class="snap-center bg-white/20 hover:bg-white/30 text-white text-center py-3 rounded-full flex-1 whitespace-nowrap"
+          aria-label={`Go to ${sol.name} solutions`}
+        >
+          {sol.name}
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+
+
+	•	Layout:
+	•	Mobile (<640px): 1-col horizontal swipe (overflow-x + snap)
+	•	Tablet (≥640px): 2-col grid
+	•	Desktop (≥1024px): 4-col grid
+	•	Styling: use .snap-center, visible focus ring, consistent padding, no dot separators.
+
+	2.	Swap in new About-section video on Home
+	•	Locate the About block on Home (currently showing a static image).
+	•	Replace its <img src="/media/home/…"> with a <video> component:
+
+<video
+  src="/media/about/overview.mp4"
+  poster="/media/about/overview-poster.jpg"
+  autoplay muted loop playsinline
+  aria-label="About VTIS Industrial overview"
+  class="w-full h-auto rounded-lg shadow-lg object-cover"
+  controls
+/>
+
+
+	•	Folder: create /public/media/about/ and stage overview.mp4 + overview-poster.jpg there.
+
+	3.	Accessibility & QA
+	•	Ensure every new <a> and <video> has a meaningful aria-label.
+	•	Test focus styles, text legibility, and layout at 375 px, 640 px, and 1024 px.
+	4.	Media Upload Path
+	•	Please scaffold these empty directories in /public/media/:
+
+/public/media/about/
+  overview.mp4
+  overview-poster.jpg
+
+
+	•	Confirm /public/media/home/ remains untouched except for the new poster swap.
+
+This will completely refresh the Solutions hero into a swipe-friendly, grid-responsive UI and upgrade the About block to use our new video assets without altering any other home-page sections.

@@ -1,0 +1,55 @@
+🔧 Agent Prompt: “Fix Mobile Hero & Add Turnkey Solution”
+	1.	Hero Section Mobile Layout
+	•	In components/SolutionsHero.tsx, adjust the grid so pills wrap into multiple rows on small screens:
+
+<div className="solutions-grid grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 px-2">
+  {solutions.map(sol => (
+    <Link key={sol.slug} href={`/solutions/${sol.slug}`}>
+      <a className="… whitespace-nowrap break-words">…</a>
+    </Link>
+  ))}
+</div>
+
+
+	•	Remove overflow-x-auto snap-x snap-mandatory on mobile so items flow vertically.
+	•	Add break-words (or whitespace-normal) to the pill text so long names wrap.
+
+	2.	Show Video Controls on Home
+	•	In components/VideoHero.tsx, update the <video> tag to include controls (in addition to autoplay muted loop playsInline):
+
+<video
+  src="/media/home/intro.mp4"
+  poster="/media/home/intro-poster.jpg"
+  autoPlay
+  muted
+  loop
+  playsInline
+  controls
+  aria-label="Intro to VTIS Industrial"
+  …
+/>
+
+
+	3.	Turnkey Solution Page + Backend
+	•	Data: Add a 5th entry to /data/solutions.json:
+
+{ "name": "Turnkey Solutions", "slug": "turnkey-solutions" }
+
+
+	•	Component: Copy your existing pages/solutions/[slug].tsx template and create pages/solutions/turnkey-solutions.tsx with appropriate headings, copy, and media.
+	•	Loader: Ensure getStaticPaths picks up the new slug from solutions.json, and getStaticProps loads any turnkey-specific data from /data/turnkey.json (create this file).
+	•	Media: Create /public/media/solutions/turnkey/overview.mp4 + overview-poster.jpg and wire into the turnkey page’s hero video (with controls, autoplay muted loop playsInline).
+
+	4.	Cleanup & QA
+	•	Rebuild and verify on mobile that:
+	•	Hero pills now wrap cleanly, no horizontal overlap
+	•	Home intro video shows play/pause controls
+	•	A new “Turnkey Solutions” link appears in the hero and on the Solutions index
+	•	Visiting /solutions/turnkey-solutions loads the new page and video
+
+—
+That single prompt will:
+	1.	Fix the cramped mobile layout in your hero.
+	2.	Make the home intro video navigable with controls.
+	3.	Add a fully scaffolded Turnkey Solutions page (data, component, media).
+	4.	Keep everything data-driven and maintainable.

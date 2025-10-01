@@ -1,0 +1,53 @@
+Here are the essential, high-impact improvements you can make—across content, design, performance and SEO—without rewriting your entire page:
+
+⸻
+
+1. Page Metadata & Schema
+	•	Add <title> and <meta name="description"> in your <head> (if not already) to match your hero headline and target keywords.
+	•	Inject JSON-LD for FAQ, BreadcrumbList or Product (if you have product detail pages) so Google’s AI snippets can pull them directly.
+	•	Remove the Replit dev-banner script in production builds—no need to ship that to customers.
+
+2. Hero Section (“Industry Solutions”)
+	•	Headline: weave in a high-value keyword phrase.
+	•	Current: “Industry Solutions.”
+	•	Optimized: “Turnkey Crushing & Screening Solutions for Mining, Construction & Recycling.”
+	•	Sub-headline: swap “three decades of engineering expertise” for a more benefit-driven line:
+	•	“Backed by 30+ years of delivering higher throughput, lower operating costs, and 24/7 support.”
+	•	Primary CTA (“Schedule Consultation” / “View Equipment Range”):
+	•	Elevate one as the “hero” action and visually de-emphasize the secondary.
+
+3. Navigation & Accessibility
+	•	Mobile menu: ensure the hamburger button has aria-expanded and toggles your <nav> visibility.
+	•	Keyboard focus: add :focus-visible outlines on interactive elements.
+	•	Alt texts on any inline SVGs (or use aria-hidden="true" plus a hidden <title>), so assistive tech can skip decorative icons.
+
+4. Content Blocks & Cards
+	•	Consistent card CTAs: “Explore Solutions” buttons all say the same, but you can personalize link text for each industry (“Explore Mining Solutions,” etc.) and include a tiny supporting benefit line (“Increase uptime by 15%”).
+	•	Reduce text duplication in “Key Equipment”: if several cards share equipment items, consider a “Common Equipment” section instead of repeating bullets.
+
+5. Performance & Loading
+	•	Code-split your routes so the heavy hero gradient and all those SVGs don’t load on every page.
+	•	Lazy-load images/icons or inline-SVG sprite so the DOM isn’t bloated.
+	•	Eliminate unused CSS classes (tailwind-purge) to shrink your CSS payload.
+
+6. SEO & AI-Search Optimization
+	•	H2/H3 hierarchy: ensure only one <h1> per page, then <h2> for “Industries We Serve,” <h3> for each industry name.
+	•	Internal linking: within each solution description, link to a relevant blog post or case study (“Read how we boosted throughput at XYZ Mine”).
+	•	Add FAQs at the bottom of the page (3–5 concise Q&As about lead time, customization, financing options). Wrap them in an FAQPage JSON-LD block.
+
+7. Trust Signals & Social Proof
+	•	Insert a “Trusted by” carousel under the hero (logos of your top 5 clients).
+	•	Add 1–2 short testimonials (with headshot + name + role) above the footer to boost conversions.
+
+⸻
+
+Summary:
+	1.	Flesh out the <head> with title/description/schema.
+	2.	Optimize hero copy for benefits + keywords.
+	3.	Improve nav accessibility & mobile behavior.
+	4.	Streamline repeating content in cards.
+	5.	Lazy-load and code-split for speed.
+	6.	Perfect your heading hierarchy and inject FAQs for AI search.
+	7.	Surface trust signals to reduce friction at the bottom.
+
+Implementing these targeted tweaks will sharpen your messaging, satisfy AI-driven search engines, and deliver a faster, more accessible experience to every visitor.

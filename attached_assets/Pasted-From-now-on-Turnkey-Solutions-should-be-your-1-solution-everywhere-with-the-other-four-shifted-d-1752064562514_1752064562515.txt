@@ -1,0 +1,39 @@
+From now on “Turnkey Solutions” should be your #1 solution everywhere, with the other four shifted down. Please implement these changes in one go—just follow these steps exactly, and don’t disturb any other existing logic:
+
+1. **Data source**  
+   - Edit `/data/solutions.json` so Turnkey is first:
+     ```json
+     [
+       { "name": "Turnkey Solutions",      "slug": "turnkey-solutions" },
+       { "name": "Mining & Aggregates",    "slug": "construction" },
+       { "name": "Sand Washing & M-Sand",  "slug": "sand-washing-m-sand" },
+       { "name": "Mobile & Modular Plants","slug": "mobile-modular-plants" },
+       { "name": "C&D Recycling",         "slug": "c-and-d-recycling" }
+     ]
+     ```
+
+2. **Turnkey page scaffold**  
+   - Create or update `pages/solutions/turnkey-solutions.tsx` (or ensure your dynamic `[slug].tsx` handles “turnkey-solutions”).  
+   - Copy the structure of the existing solutions detail pages—hero video, industry grid, FAQ—and replace titles/text with “Turnkey Solutions.”  
+   - Place its media under:
+     ```
+     public/media/solutions/turnkey/intro.mp4
+     public/media/solutions/turnkey/intro-poster.jpg
+     ```
+
+3. **Backend cleanup**  
+   - Remove any legacy `/pages/api/solutions/*` or old JSON files so only `/data/solutions.json` remains.  
+   - Confirm no stale imports reference the old order or endpoints.
+
+4. **Media streaming**  
+   - In your `<VideoHero>` components for home/about, set `controls={false}`, `autoplay`, `loop`, `playsInline`, and point `src` to the correct paths:  
+     - Home: `/media/home/intro.mp4`  
+     - About: `/media/about/overview.mp4`  
+   - Ensure your server supports byte-range requests on `/public/media/**` so videos start instantly.
+
+5. **Rebuild & test**  
+   - Restart your dev server.  
+   - On mobile, verify the solutions pills wrap into rows and “Turnkey Solutions” appears first.  
+   - Navigate to `/solutions/turnkey-solutions` and confirm the new page matches the style of the other four.
+
+Please implement exactly as above—do not remove or refactor any other components or data sources beyond what’s described. Thanks!```

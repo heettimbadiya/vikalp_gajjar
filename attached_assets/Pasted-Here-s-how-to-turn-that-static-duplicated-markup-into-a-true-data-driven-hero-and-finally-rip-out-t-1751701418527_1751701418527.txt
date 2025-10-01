@@ -1,0 +1,84 @@
+Here’s how to turn that static, duplicated markup into a true data-driven hero—and finally rip out the old, dead code:
+
+⸻
+
+1. Centralize your “Solutions” data
+	•	Create a /data/solutions.json (or in your CMS) with your four slugs:
+
+[
+  { "name": "Mining & Aggregates",   "slug": "construction" },
+  { "name": "Sand Washing & M-Sand", "slug": "sand-washing-m-sand" },
+  { "name": "Mobile & Modular Plants","slug": "mobile-modular-plants" },
+  { "name": "C&D Recycling",         "slug": "c-and-d-recycling" }
+]
+
+
+	•	In getStaticProps (or your server loader) for the Home page, import that JSON so you have props.solutions.
+
+2. Replace the old hero with a dynamic <SolutionsHero>
+	•	Delete the entire original <section class="bg-blue-600…"> block.
+	•	Add a new components/SolutionsHero.tsx:
+
+interface Solution { name: string; slug: string; }
+export default function SolutionsHero({ solutions }: { solutions: Solution[] }) {
+  return (
+    <section className="solutions-hero py-8 bg-gradient-to-r from-blue-700 to-blue-500 text-white">
+      <div className="container mx-auto px-4">
+        <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-center">
+          Explore Our Industry Solutions
+        </h2>
+        <div className="solutions-grid overflow-x-auto snap-x snap-mandatory grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 px-2 scrollbar-hide">
+          {solutions.map(sol => (
+            <Link key={sol.slug} href={`/solutions/${sol.slug}`}>
+              <a
+                className="snap-center bg-white/20 hover:bg-white/30 text-white text-center py-3 rounded-full flex-1 whitespace-nowrap block focus:ring-2 focus:ring-white transition-all duration-300"
+                aria-label={`Go to ${sol.name} solutions`}
+              >
+                {sol.name}
+              </a>
+            </Link>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+
+	•	In your Home page:
+
+import SolutionsHero from '../components/SolutionsHero';
+import solutions from '../data/solutions.json';
+
+export async function getStaticProps() {
+  return { props: { solutions } };
+}
+
+export default function Home({ solutions }) {
+  return (
+    <>
+      {/* …other sections… */}
+      <SolutionsHero solutions={solutions} />
+      {/* …rest of page… */}
+    </>
+  );
+}
+
+
+
+3. Purge the dead backend files
+	•	Remove any unused legacy /pages/api/solutions/* or /data/old-solutions.json so you’re only shipping one source of truth.
+	•	Verify your import paths no longer reference the old hero or “dead” solution endpoints.
+
+4. Ensure media paths are wired up correctly
+	•	About-video is already pointing at /media/about/overview.mp4 and its poster.
+	•	Home-video in <VideoHero> should point at /media/home/intro.mp4.
+	•	On your server (Vite/Webpack), confirm you serve everything under /public/media/**. No backend route needed—just static hosting.
+
+⸻
+
+That gives you:
+	1.	A single JSON “backend” for your solutions list.
+	2.	A replace-only change to your Home page (old hero gone, new component in).
+	3.	Dead files removed so nothing lingers.
+	4.	Media uploads confined to /public/media/home/ and /public/media/about/.

@@ -1,0 +1,51 @@
+You are working on the VTIS Industrial React+Vite site.  Starting from main, create a branch feature/site-polish.  Keep the build green (`pnpm run build && pnpm test`) after each logical change.
+
+1. **Home → “Our Capabilities”**  
+   - In `src/pages/home.tsx`, locate the “Why Choose Us?” section.  
+   - Replace its heading and copy with the identical “Our Capabilities” grid from `src/pages/solutions.tsx`.  
+   - Preserve styling and icons exactly as in Solutions.
+
+2. **Remove Datasheets & Downloads**  
+   - In **every** `src/pages/product-detail.tsx`, remove the “Request Datasheet” button and the entire “Downloads & Resources” `<section>`.  
+   - Delete any `<PdfBadge>` imports and related code.
+
+3. **Globally Insert FAQ**  
+   - In each `product-detail.tsx`, immediately beneath the product description, render `MiniFaqAccordion` with the shared FAQ items.  
+   - Ensure the `<FAQPage>` JSON-LD (via `ProductFaqSchema.tsx`) is injected on every product page.
+
+4. **Fix Product Card Click Area**  
+   - In `src/pages/home.tsx` and `src/components/related-products.tsx`, wrap each `<Card>` (not just its “View Details” button) in a `<Link>` to its product page.  
+   - Remove the inner `<Link>` around the button.
+
+5. **Image Aspect Ratio**  
+   - Audit all `<img>` in product grids and on `product-detail.tsx`.  
+   - Replace any zoomed/cropped container styles with:
+     ```css
+     img { object-fit: cover; width: 100%; aspect-ratio: 16/9; }
+     ```
+   - Confirm full product is visible.
+
+6. **“View Details” Button Styling**  
+   - Replace solid blue button with this outline style:
+     ```tsx
+     <button className="w-full py-2 border-2 border-blue-600 rounded-lg text-blue-600 font-medium hover:bg-blue-50 transition">
+       View Details
+     </button>
+     ```
+
+7. **Rename & Archive**  
+   - **Rename** the “Vibrating Feeder” product page and route to `/products/feeder`, update its spec-table captions accordingly.  
+   - **Archive** the “Grizzly Screen” page: remove its route and component, and delete its folder.
+
+8. **Smoke & QA**  
+   - Run `pnpm run build && pnpm test`.  
+   - Smoke-test on mobile and desktop to confirm:
+     • Home shows “Our Capabilities”  
+     • No datasheet/download UI anywhere  
+     • FAQ accordions expand  
+     • Entire product cards click  
+     • Images are correct ratio  
+     • Feeder page is at `/products/feeder`  
+     • Grizzly Screen page 404s or redirects to /products  
+
+Commit each group of changes in its own commit. Let’s keep the UI clean, modern, and mobile-first. ```

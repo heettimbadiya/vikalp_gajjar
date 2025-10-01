@@ -1,0 +1,33 @@
+Here’s a single prompt you can feed to the Replit AI agent to layer in these final QA/deployment tasks without touching any other UI:
+
+⸻
+
+Prompt:
+
+Please extend the product-specs work with the following site-wide QA, deployment and tracking features without modifying any existing components or pages beyond what’s specified:
+	1.	Automated & Manual Testing
+	•	Add Cypress (or Playwright) end-to-end tests to verify each specs table renders correctly on desktop and mobile, with sticky headers/columns and accordion cards.
+	•	Add a snapshot/unit test suite for the SpecsTable component to catch regressions.
+	2.	CI/CD Deployment Steps
+	•	Update .github/workflows/ci.yml to run the new test suites before building.
+	•	Add a new “deploy-specs” job that builds and publishes only if all tests pass.
+	3.	Outstanding Items Flag
+	•	Scan all product pages for any legacy spec displays (e.g. Conveyor Systems, Mobile Crushing Plant) and output a list in the build logs so we can update them later.
+	4.	Versioning & Rollback
+	•	Tag the release as v2.0-spec-tables in Git, and inject that tag into a <meta name="release-tag"> on each product page for easy rollback reference.
+	5.	Performance Metrics
+	•	Integrate a Lighthouse check in CI to ensure the spec tables add <50 KB gzip to the bundle and keep FCP <1.5 s on mobile emulation.
+	6.	Accessibility Sign-off
+	•	Add an aXe accessibility audit step to the test suite, verifying all table ARIA roles, focus states, and keyboard navigation on the accordion cards.
+	7.	Styling Consistency
+	•	Run a Tailwind CSS lint to ensure all new classes conform to our design tokens (colors, spacing, typography).
+	8.	Localization Readiness
+	•	Wrap any hard-coded UI strings in t('...') so they’re ready for translation and add an entry to locales/en.json.
+	9.	Analytics Hooks
+	•	Add data-attribute hooks (data-analytics="specs.expand", etc.) on the mobile accordion toggle and desktop row-hover to capture in our analytics.
+	10.	Final Smoke Test
+
+	•	After deployment, run a headless check that each product URL /products/* returns HTTP 200 and contains the <table> or mobile cards markup.
+
+Deliverable:
+A single PR with all test files, CI config updates, analytics snippet, and release tagging—no changes to content or layout outside of these QA/deploy additions.

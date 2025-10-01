@@ -1,0 +1,29 @@
+Excellent. The website structure is now defined by our sitemap. Your next task is to build the individual "Solutions by Industry" pages.
+You will create a dynamic page template that showcases our expertise and recommends the right equipment for specific industries.
+Step 1: Create the Dynamic Page Template
+ * Action: Create a new dynamic route at app/solutions/[industry]/page.tsx.
+ * This page will take an industry slug from the URL (e.g., "mining") and display content tailored to that industry.
+Step 2: Design the Page Content Blueprint
+The page template must contain the following sections, populated with relevant content:
+ * Hero Section:
+   * A large title, e.g., "Solutions for the Mining Industry."
+   * A short, descriptive paragraph explaining the unique challenges of that industry. For "Mining," this would be about handling hard, abrasive materials and the need for high uptime.
+ * Recommended Equipment Section:
+   * A headline like "Recommended Equipment for Mining Operations."
+   * Logic: From our data/products.ts file, you will feature a grid of the products most relevant to that industry.
+     * For a "Mining" page, you should feature: Jaw Crushers, Grizzly Screens, and HSI Impactors.
+     * For a "Construction & Aggregates" page, you should feature: Inclined Vibrating Screens, VSI Sand Washers, and Conveyors.
+   * Each product shown must be a "Product Card" with its image, name, and a button linking to its full detail page. This creates valuable internal links for SEO.
+ * Our Expertise Section:
+   * A content block with a title like "Why Choose Us for Your Mining Needs?"
+   * Include a paragraph explaining our company's experience in this sector, highlighting our robust engineering and support from our base in Ahmedabad.
+ * Call to Action (CTA):
+   * A prominent button at the bottom of the page with text like "Contact Our Mining Solutions Expert" that links to the main /contact page.
+Step 3: Build and Link the Initial Pages
+Action:
+ * Using the template you just built, create the content for and ensure these two pages are live:
+   * /solutions/mining
+   * /solutions/construction-aggregates
+ * Update the main /solutions landing page so that its cards for "Mining" and "Construction & Aggregates" now correctly link to these new detail pages.
+Your Deliverable:
+Please confirm when you have created the dynamic page template and the two initial industry solution pages. I will then review /solutions/mining to ensure it is implemented correctly.

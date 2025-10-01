@@ -1,0 +1,37 @@
+We have a critical problem. The website's navigation is broken and key pages are missing or unlinked. This must be our only priority.
+Pause all work on advanced features like the "Model Assistant" or "Image Galleries." Your only task now is to fix the site's structure to make it clear, logical, and easy for any visitor to navigate.
+Follow this three-step plan precisely.
+Step 1: The Data Audit - Restore Missing Products
+It appears the "Mobile Crushing Plant" product is missing. This is likely a mistake in the data file.
+Action:
+ * Go to your data file at /data/products.ts.
+ * Verify that the product object for "Mobile Crushing Plant" exists. If it is missing, you must add it back immediately. Ensure it has a category, such as "Mobile Plants" or "Crushers," so it can be filtered correctly.
+Step 2: The Navigation Blueprint - Rebuild the Header and Footer
+The header and footer are the most important navigation tools on the entire website. They must be perfect.
+Action: Rebuild the Header
+ * Ensure the main navigation bar in your <header> component contains these exact five links in this exact order:
+   * Home (links to /)
+   * Products (links to /products)
+   * Solutions (links to /solutions)
+   * About Us (links to /about)
+   * Contact (links to /contact)
+Action: Rebuild the Footer
+ * The <footer> must serve as a mini-sitemap so users can find any page.
+ * Structure the footer to have these specific sections:
+   * A "Products" column: This must list all 8 of our product categories (e.g., "Jaw Crushers," "HSI Impactors," "Inclined Vibrating Screens," etc.). Each name must be a link to its correct detail page.
+   * A "Company" column: This must contain links to Home, About Us, Solutions, and Contact.
+   * A "Contact Us" column: This must display our address in Ahmedabad, our phone number, and our email address.
+Step 3: Fix the Product Catalog Page (/products)
+This page is the central hub for our equipment and its navigation must be flawless.
+Action:
+ * Verify All Products Appear: When a user first lands on the /products page, all 8 product cards must be visible by default.
+ * Fix the Category Filters: The filter buttons at the top of the page (All, Crushers, Screening, Washing) must work correctly.
+   * Clicking "All" must show all 8 products.
+   * Clicking "Crushers" must show all relevant crusher types (e.g., Jaw Crushers, HSI Impactors).
+   * Verify this logic for every category.
+Your Deliverable:
+This is a corrective action. I need you to confirm when these fixes are complete. Specifically, please confirm that:
+ * The "Mobile Crushing Plant" is visible again on the /products page.
+ * The main header contains the five core links as specified.
+ * The footer contains a complete sitemap with links to all product categories.
+ * The filters on the /products catalog page are working reliably.

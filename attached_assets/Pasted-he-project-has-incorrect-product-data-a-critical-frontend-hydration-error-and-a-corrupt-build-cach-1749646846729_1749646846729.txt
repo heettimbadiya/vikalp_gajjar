@@ -1,0 +1,116 @@
+he project has incorrect product data, a critical frontend hydration error, and a corrupt build cache. You will fix all issues by performing the following five steps in order.
+Step 1: Clean the Build Cache
+ * Action: To ensure no old pages or data are served, you must first completely delete the Next.js build cache. Execute the following command in the terminal:
+   rm -rf .next
+
+Step 2: Recreate the Authoritative Data File with Corrected VSI Identity
+ * Action: Delete the old data file and create a new one with the final, corrected data for all 10 products.
+ * 1. Delete the old file:
+   rm -f src/data/products.ts
+
+ * 2. Create a new file at src/data/products.ts and paste the entire code block below into it. This version contains the completely corrected identity and data for the VSI (CubiSand).
+   // src/data/products.ts
+
+export interface Product {
+  id: number;
+  slug: string;
+  name: string;
+  category: string;
+  image: string;
+  description: string;
+  benefits: string[];
+  applications: string[];
+  spec_models?: Record<string, string | number>[];
+}
+
+export const products: Product[] = [
+  // ... (Objects for products 1 through 8) ...
+
+  {
+    id: 9,
+    // CORRECTED SLUG AND NAME
+    slug: "vsi-cubisand-sand-maker",
+    name: "VSI (CubiSand) Sand Maker",
+    category: "Crushers",
+    image: "/images/products/vsi-washer.jpg", // Image name can remain
+    // CORRECTED DESCRIPTION AND BENEFITS
+    description: "The Vertical Shaft Impactor (CubiSand) is an advanced tertiary stage crusher designed to produce high-quality, cubical manufactured sand (M-Sand) with superior shape and consistency.",
+    benefits: ["Superior product shape and cubicity", "High product yield and reduction ratio", "Creates high-quality manufactured sand", "Gradation control for consistent product"],
+    applications: ["Manufactured sand production", "Sand shape improvement", "Concrete and plaster sand preparation"],
+    spec_models: [
+      { "Model": "VT-VSI-1", "Feed Opening (mm)": 35, "Max Feed Size (mm)": 35, "Power (hp / kW)": "110-130 hp / 82-97 kW", "Throughput (TPH)": "60-100", "Rotor Speed (RPM)": "1800-2200" },
+      { "Model": "VT-VSI-2", "Feed Opening (mm)": 40, "Max Feed Size (mm)": 40, "Power (hp / kW)": "160-190 hp / 120-142 kW", "Throughput (TPH)": "90-150", "Rotor Speed (RPM)": "1600-2000" },
+      { "Model": "VT-VSI-3", "Feed Opening (mm)": 45, "Max Feed Size (mm)": 45, "Power (hp / kW)": "230-280 hp / 170-210 kW", "Throughput (TPH)": "160-250", "Rotor Speed (RPM)": "1500-1800" }
+    ]
+  },
+
+  // ... (Object for product 10, Screw Sand Washer) ...
+];
+
+   (The full code block with all 10 products, as provided in previous turns but with this corrected VSI object, should be pasted here)
+Step 3: Isolate the Specification Table into a New Component
+ * Action: Extract the table logic into its own component to fix the rendering bug.
+ * 1. Create a new file at src/components/product-spec-table.tsx.
+ * 2. Paste the following code into this new file:
+   // src/components/product-spec-table.tsx
+'use client';
+
+import React from 'react';
+
+interface SpecTableProps {
+  spec_models?: Record<string, string | number>[];
+}
+
+export default function ProductSpecTable({ spec_models }: SpecTableProps) {
+  if (!spec_models || spec_models.length === 0) {
+    return <p>No technical specifications available for this product.</p>;
+  }
+
+  const headers = Object.keys(spec_models[0]);
+
+  return (
+    <div className="overflow-x-auto">
+      <table className="w-full border border-gray-200 rounded-lg">
+        <thead className="bg-gray-50">
+          <tr>
+            {headers.map((header) => (
+              <th key={header} className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-r border-gray-200 last:border-r-0">
+                {header}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody className="bg-white divide-y divide-gray-200">
+          {spec_models.map((model, rowIndex) => (
+            <tr key={rowIndex} className={rowIndex % 2 === 0 ? 'bg-white hover:bg-blue-50' : 'bg-gray-50 hover:bg-blue-50'}>
+              {headers.map((header) => (
+                <td key={header} className="px-4 py-3 whitespace-nowrap text-sm text-gray-900 border-r border-gray-200 last:border-r-0">
+                  {String(model[header])}
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
+Step 4: Dynamically Import the Table Component on the Product Page
+ * Action: Modify the main product detail page to use the new, robust component.
+ * 1. Go to the file: app/products/[slug]/page.tsx.
+ * 2. Add this dynamic import at the top of the file:
+   import dynamic from 'next/dynamic'
+
+ * 3. Define the dynamically loaded component right after the imports:
+   const ProductSpecTable = dynamic(() => import('@/components/product-spec-table'), { ssr: false });
+
+ * 4. Replace the old table code: Find the entire <div> block containing the old table logic and replace it with this single line:
+   <ProductSpecTable spec_models={product.spec_models} />
+
+Step 5: Rebuild and Restart the Application
+ * Action: Perform a full rebuild and restart the server. Execute the following command in the terminal:
+   npm run build && npm start
+
+Your Deliverable:
+To confirm that all issues are finally resolved, please provide a screenshot of the new, working "VSI (CubiSand) Sand Maker" product page.

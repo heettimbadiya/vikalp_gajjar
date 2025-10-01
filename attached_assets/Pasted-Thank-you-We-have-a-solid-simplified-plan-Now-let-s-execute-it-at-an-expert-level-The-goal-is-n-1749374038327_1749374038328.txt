@@ -1,0 +1,33 @@
+Thank you. We have a solid, simplified plan. Now, let's execute it at an expert level. The goal is no longer just to build the features, but to build them as a senior development team would—focusing on a world-class user experience on the frontend and a highly scalable, future-proof architecture on the backend.
+You are to act as a Lead Full-Stack Architect.
+Part 1: The "Best-in-Class" Frontend Challenge
+Your task is to build a user interface that is not just functional, but also exceptionally fast, fluid, and professional.
+ * 1. Performance and User Experience are Paramount:
+   * Image Optimization: All product images must use the Next.js <Image> component for automatic optimization, AVIF/WebP support, and lazy loading.
+   * Fluid Transitions: Implement page transitions using a library like Framer Motion. When a user navigates from the product catalog to a detail page, it should be a smooth, non-jarring experience.
+   * Optimistic UI: For the lead capture/contact form, implement an "Optimistic UI." Upon submission, the UI should immediately show a "Thank you" message, even before the backend has fully confirmed the request. Handle potential errors gracefully.
+ * 2. Scalable State Management for Inquiries:
+   * Even without a full cart, users may want to inquire about multiple products. Implement a simple client-side state management solution like Zustand or Jotai.
+   * On each product page, add an "Add to Inquiry List" button. This will add the product to a list managed by your state solution. The contact page will then show the list of products the user is interested in.
+ * 3. Bulletproof Form Handling:
+   * The inquiry form must be built using React Hook Form for performance and Zod for schema-based validation. Ensure that validation for email and phone numbers is robust.
+Part 2: The "Deeper" Backend Foundation
+This is where we go deeper. While the user-facing features are simple, the backend must be built for massive scale and future complexity.
+ * 1. The Event-Driven Lead Pipeline (Expert Implementation):
+   * A lead submission is not just a database entry; it's the start of a critical business process. You will implement it using an Event-Driven Architecture (EDA).
+   * The Flow:
+     * The frontend form submits a GraphQL mutation.
+     * The mutation's only jobs are to validate the data with Zod and publish a single, structured event, such as LeadSubmittedV1, to an event bus (e.g., AWS Kinesis or Google Pub/Sub). It should then immediately return a success response to the frontend. This makes the user's experience instant.
+     * Two separate, independent serverless functions will subscribe to this event:
+       * save-lead-to-db-consumer: This function's sole responsibility is to consume the event and save the lead information to our PostgreSQL database.
+       * notify-sales-team-consumer: This function's sole responsibility is to consume the same event and send a formatted email notification to our sales team in Ahmedabad.
+   * Justification: You must briefly explain why this decoupled, event-driven approach is superior to a monolithic "save-and-then-email" function in terms of resilience, scalability, and future extensibility.
+ * 2. The "Internal Powerhouse": Semantic Search for the Sales Team:
+   * The public website will not have a complex search bar. However, you will use the Vector Database to build a powerful internal tool.
+   * The Task: Create a separate, internal-only GraphQL endpoint (which we would later secure). This endpoint, internalSemanticSearchForLeads, will take a natural language query from an internal user (e.g., a sales manager).
+   * The Functionality: It will search the "Message" field of all captured leads in the Vector DB to find semantically similar inquiries. For example, a sales manager could search for "all inquiries from last month related to high-volume aggregate washing" and get relevant leads, even if they didn't use those exact keywords. This provides immense business value from the data we collect.
+Deliverable:
+Provide an updated execution plan that incorporates these expert-level requirements. Specifically:
+ * Confirm the frontend libraries you will use (Framer Motion, Zustand, Zod).
+ * Provide a revised architectural diagram that clearly shows the event-driven flow for the lead capture process, including the mutation, the event bus, and the two separate consumer functions.
+ * Describe the GraphQL schema for the new internalSemanticSearchForLeads query.

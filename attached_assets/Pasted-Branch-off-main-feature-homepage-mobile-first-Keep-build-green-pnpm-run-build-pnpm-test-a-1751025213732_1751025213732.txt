@@ -1,0 +1,50 @@
+Branch off main → feature/homepage-mobile-first  
+Keep build green (`pnpm run build && pnpm test`) after every major commit  
+
+## 1. Mobile-First Foundation  
+- Design all layout blocks for small screens first; then scale up to tablet/desktop  
+- Use responsive CSS utilities (e.g. Tailwind’s `sm:`, `md:`) to adjust layouts  
+
+## 2. Header + Industries Strip  
+- Header: logo left, hamburger menu & search icon right on mobile; expand to full nav on tablet+  
+- Directly beneath header, full-width strip with **background:#F3F4F6 (light gray)**  
+- Center-aligned industry links **Mining Operations**, **Construction & Aggregates**, **Recycling & Waste Management** separated by dots  
+- Tappable items navigate to `/solutions/mining`, `/solutions/aggregates`, `/solutions/recycling`  
+
+## 3. Hero Visual  
+- Full-screen mobile-optimized image/video with gentle Ken Burns effect  
+- No overlaid text or buttons; allow the image to breathe  
+
+## 4. Tagline Block + Lead-In Copy  
+- On mobile: center-aligned H2 + paragraph + single CTA button  
+- Example copy:  
+  > **“Power your plant with VTIS Industrial Equipment.”**  
+  > Small text: “Discover robust, energy-efficient crushers and screens engineered for your toughest projects.”  
+  > Button: “Explore Products”  
+- Background: white  
+
+## 5. About Preview → Modern Split Card  
+- Use **stacked cards** on mobile: image on top, content below  
+- Wrap each card in a subtle **rounded container** with card-style drop shadow  
+- Content card: left edge accent bar in brand blue; headline + 40-word teaser; button “Our Story”  
+- On tablet/desktop: two-column grid with overlap (image container shifts slightly over content container)  
+
+## 6. Featured Products Carousel → Fluid Snap + Autoplay  
+- Horizontal carousel with **autoplay (5s interval)** but pausable on touch/hover  
+- Snap scroll behavior via `scroll-snap-type: x mandatory`  
+- Show 1.5 cards on mobile (peek next item), 3 cards on desktop  
+- Add next/prev arrows that fade in on hover; pagination dots below carousel  
+
+## 7. Contact Teaser  
+- Background: **#E0F2FF (light blue)**  
+- Mobile: stacked text + button; desktop: two columns  
+- Copy: “Have a project in mind? Our experts are here to help.” + “Get in Touch”  
+
+## 8. Footer  
+- Simplified mobile layout: accordion for sections; expand on tap  
+- White background, clear text  
+
+### Deliverables  
+- Fully mobile-first React components with Tailwind classes  
+- Carousel uses accessible `aria-live` region for autoplay announcements  
+- All new sections covered by unit/integration tests  

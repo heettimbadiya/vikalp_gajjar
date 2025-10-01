@@ -1,0 +1,123 @@
+🔄 Revision: Replace “cone-crushers” & supply complete FAQ copy for all 10 actual products
+
+Below is the drop-in replacement for §2 · Per-Product FAQ Sets in the earlier agent brief.
+Changes:
+	1.	Removed cone-crushers (not a sellable SKU).
+	2.	Added conveyor-systems so the count still equals 10.
+	3.	Supplied all 30 Q & A lines ready for copy-paste into the /content/faq/*.faq.ts files.
+
+⸻
+
+2 · Per-Product FAQ Sets  (complete copy)
+
+Create one file per product:
+
+Slug	FAQ lines	File name
+single-toggle-jaw-crusher	F1 - F3	single-toggle-jaw-crusher.faq.ts
+double-toggle-jaw-crusher	F4 - F6	double-toggle-jaw-crusher.faq.ts
+hsi-impactors	F7 - F9	hsi-impactors.faq.ts
+inclined-vibrating-screens	F10-F12	inclined-vibrating-screens.faq.ts
+grizzly-screens	F13-F15	grizzly-screens.faq.ts
+bucket-sand-classifiers	F16-F18	bucket-sand-classifiers.faq.ts
+hydrocyclone-sand-classifiers	F19-F21	hydrocyclone-sand-classifiers.faq.ts
+vsi-cubisand-sand-maker	F22-F24	vsi-cubisand-sand-maker.faq.ts
+mobile-crushing-plant	F25-F27	mobile-crushing-plant.faq.ts
+conveyor-systems	F28-F30	conveyor-systems.faq.ts
+
+FAQ COPY (F1 – F30)
+(one line = one Q, one line = its A; keep the order for import)
+
+F1 Q: What materials can the single-toggle jaw crusher handle? 
+   A: Up to 300 MPa rock—basalt, granite, even reinforced concrete—thanks to its deep-V chamber and 110 kW flywheel.
+
+F2 Q: How quickly can jaw plates be changed? 
+   A: Two techs with an impact gun swap plates in under 45 minutes using the slide-out seat and captive wedges.
+
+F3 Q: Is remote condition monitoring supported? 
+   A: Yes—an optional IoT node streams bearing temp, stroke counts and kWh/t via MQTT or OPC-UA.
+
+F4 Q: Why choose a double-toggle jaw crusher? 
+   A: The longer stroke and double toggle deliver higher nip angles—ideal for 400 MPa iron-ore or abrasive quartzite.
+
+F5 Q: What is the expected pitman life? 
+   A: Over 20 000 h thanks to alloy-steel forgings and full stress-relief heat treatment.
+
+F6 Q: Does it ship container-ready? 
+   A: Breaks into three ISO-20′ modules, no oversize permits required worldwide.
+
+F7 Q: What makes the HSI rotor unique?  
+   A: The 4-bar, 600 mm deep rotor accepts 700 mm feed and auto-balances at 1 500 rpm for lower vibration.
+
+F8 Q: Can I swap blow-bars in the field?  
+   A: Yes—one person, manual hoist; reversible bars mean double wear life.
+
+F9 Q: How does the hydraulic curtain protect against tramp iron?  
+   A: Pressure spikes trigger a 40 ms relief that clears steel without stopping the drive.
+
+F10 Q: What slope angle are the inclined screens set to?  
+    A: Factory-set at 18°, adjustable ±3° to tune retention time.
+
+F11 Q: Are decks quick-release?  
+    A: Yes—snap-lock rail system lets crews trade wire cloth for urethane panels in < 30 min per deck.
+
+F12 Q: What drives the vibrator mechanism?  
+    A: Dual self-sync exciters with SKF bearings and splash lubrication—50 000 h L10 life.
+
+F13 Q: Why use a grizzly screen before primary crushing?  
+    A: It scalps out 0-100 mm fines, boosting crusher throughput by ≈ 15 %.
+
+F14 Q: Is the bar spacing customizable?  
+    A: Every unit ships with bolt-on rails in 25, 50 or 75 mm increments.
+
+F15 Q: How is the pan protected from impact?  
+    A: Replaceable 400 HB liners + rubber cushions under the exciter beam.
+
+F16 Q: What sand cut-size can the bucket classifier achieve?  
+    A: Adjustable weir lets you split at D₅₀ 150-300 µm.
+
+F17 Q: Is the bucket wheel reversible?  
+    A: Yes—extending bearing life and evening out wear.
+
+F18 Q: Water requirement per tonne?  
+    A: ~0.25 m³ / t with our high-efficiency sump pump loop.
+
+F19 Q: How fine can the hydrocyclone classifier separate?  
+    A: Down to 75 µm at 2.6 SG using our 150 mm apex kit.
+
+F20 Q: Are the liners replaceable?  
+    A: Snap-fit polyurethane liners change out in 10 minutes—no adhesive.
+
+F21 Q: How do I control underflow density?  
+    A: Pneumatic pinch-valve with PID loop tied to a density meter.
+
+F22 Q: What’s unique about the CubiSand rotor?  
+    A: 5-port enclosed rotor yields < 7 % minus-75 µm while improving cube shape index by 20 %.
+
+F23 Q: Power draw on 60 Hz grid?  
+    A: 250 kW @ 1 800 rpm, soft-starter ready.
+
+F24 Q: Does it accept wet feed?  
+    A: Up to 12 % moisture; cascade ports prevent build-up.
+
+F25 Q: How fast can the mobile plant deploy?  
+    A: Track self-levels in under 12 minutes; no cranes needed.
+
+F26 Q: Is the genset Stage V compliant?  
+    A: Yes—diesel-electric hybrid meets EU Stage V & US Tier 4F.
+
+F27 Q: Can I run it from grid power on site?  
+    A: Plug-in 400 V / 125 A receptacle for silent, zero-emission mode.
+
+F28 Q: What belt widths are supported?  
+    A: 500 to 1 200 mm with modular truss spans up to 60 m.
+
+F29 Q: How is belt tracking maintained?  
+    A: Auto-align trainers + LIDAR edge detection feeding the PLC.
+
+F30 Q: Can I get stainless rollers for corrosive plants?  
+    A: 304 SS or rubber-coated rollers are a factory option, lead-time 2 weeks.
+
+
+⸻
+
+All other instructions (hook, accordion, schema mapping, DoD) stay exactly as in the previous prompt.

@@ -1,0 +1,30 @@
+We need to pause and reset our approach. The product pages are incomplete and disorganized. Before you write any more frontend code, we must create a single, perfect "source of truth" for all of our product data.
+Your only task right now is to create the complete and final data/products.ts file.
+You will create one complete product object in the products array for every single product in the following checklist. Refer to the specification data we have already discussed to fill in the details for each.
+Product Checklist & Required Slugs:
+| Product Name | Target URL (slug) | Status |
+|---|---|---|
+| Jaw Crushers | jaw-crushers | To Be Created |
+| Inclined Vibrating Screens | inclined-vibrating-screens | To Be Created |
+| Grizzly Screens (Scalping) | grizzly-screens | To Be Created |
+| HSI Impactors | hsi-impactors | To Be Created |
+| Screw Sand Washers | screw-sand-washers | To Be Created |
+| Bucket Sand Classifiers | bucket-sand-classifiers | To Be Created |
+| Hydrocyclone Sand Classifiers | hydrocyclone-sand-classifiers | To Be Created |
+| VSI Sand Washers (CubiSand) | vsi-sand-washers | To Be Created |
+Required Data Structure
+Each of the 8 product objects you create in the array must follow this structure:
+{
+  id: number; // A unique ID, e.g., 1, 2, 3...
+  slug: string; // The exact slug from the table above
+  name: string; // The full product name, e.g., "Jaw Crushers (VTIS Series)"
+  category: string; // e.g., "Crushers", "Screening", "Washing"
+  image: string; // A placeholder image URL, e.g., "/images/products/hsi-impactor.jpg"
+  description: string; // A 2-3 sentence marketing description.
+  benefits: string[]; // A list of 3-4 key benefits.
+  applications: string[]; // A list of 3-4 common applications.
+  spec_models: Record<string, string | number>[]; // The detailed model/spec data from our previous discussion.
+}
+
+Your Deliverable:
+Your only output for this task should be the complete, final code for the /data/products.ts file, containing all 8 complete product objects. Do not build any pages yet. We will do that in the next step once this data source is perfect.

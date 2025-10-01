@@ -1,0 +1,30 @@
+We will now correct the product data one step at a time. Your only task is to update the specification tables for the "Single Toggle Jaw Crusher" and the "Double Toggle Jaw Crusher".
+Step 1: Locate the Data File
+ * Action: Go to the data file at /data/products.ts.
+Step 2: Update the "Double Toggle Jaw Crusher"
+ * Action: Inside the products array, find the product object where the slug is 'double-toggle-jaw-crusher'. In that specific object, replace the entire spec_models array with the following correct data from the final specification file.
+// Correct spec_models for Double Toggle Jaw Crusher
+spec_models: [
+  { "Size (inches)": "16x09", "Size (mm)": "400x225", "Max Feed Size (mm)": 175, "CSS Range (mm)": "12-20", "Power (HP)": "20-30", "Capacity (TPH)": "12-20", "Toggle Type": "Double", RPM: 375 },
+  { "Size (inches)": "20x12", "Size (mm)": "500x300", "Max Feed Size (mm)": 250, "CSS Range (mm)": "16-40", "Power (HP)": "25-40", "Capacity (TPH)": "16-40", "Toggle Type": "Double", RPM: 350 },
+  { "Size (inches)": "24x12", "Size (mm)": "600x300", "Max Feed Size (mm)": 300, "CSS Range (mm)": "20-60", "Power (HP)": "30-45", "Capacity (TPH)": "25-60", "Toggle Type": "Double", RPM: 330 },
+  { "Size (inches)": "30x15", "Size (mm)": "750x375", "Max Feed Size (mm)": 325, "CSS Range (mm)": "28-85", "Power (HP)": "35-50", "Capacity (TPH)": "28-85", "Toggle Type": "Double", RPM: 325 },
+  { "Size (inches)": "36x24", "Size (mm)": "900x600", "Max Feed Size (mm)": 500, "CSS Range (mm)": "35-125", "Power (HP)": "80-100", "Capacity (TPH)": "35-125", "Toggle Type": "Double", RPM: 250 }
+]
+
+Step 3: Update the "Single Toggle Jaw Crusher"
+ * Action: Next, find the product object where the slug is 'single-toggle-jaw-crusher'. In that object, replace the spec_models array with the following complete and correct data.
+// Correct spec_models for Single Toggle Jaw Crusher
+spec_models: [
+  { "SIZE (INCHES)": "16x10", "SIZE (MM)": "400x250", "MAX FEED SIZE (MM)": 200, "CSS RANGE (MM)": "20-60", "POWER (HP)": "25-30", "CAPACITY (TPH)": "20-55" },
+  { "SIZE (INCHES)": "20x12", "SIZE (MM)": "500x300", "MAX FEED SIZE (MM)": 250, "CSS RANGE (MM)": "25-75", "POWER (HP)": "30-40", "CAPACITY (TPH)": "30-70" },
+  { "SIZE (INCHES)": "24x15", "SIZE (MM)": "600x375", "MAX FEED SIZE (MM)": 300, "CSS RANGE (MM)": "30-100", "POWER (HP)": "40-50", "CAPACITY (TPH)": "40-90" },
+  { "SIZE (INCHES)": "30x20", "SIZE (MM)": "750x500", "MAX FEED SIZE (MM)": 400, "CSS RANGE (MM)": "40-125", "POWER (HP)": "60-75", "CAPACITY (TPH)": "60-150" },
+  { "SIZE (INCHES)": "36x24", "SIZE (MM)": "900x600", "MAX FEED SIZE (MM)": 500, "CSS RANGE (MM)": "50-150", "POWER (HP)": "80-100", "CAPACITY (TPH)": "80-180" },
+  { "SIZE (INCHES)": "42x32", "SIZE (MM)": "1050x800", "MAX FEED SIZE (MM)": 700, "CSS RANGE (MM)": "60-180", "POWER (HP)": "100-125", "CAPACITY (TPH)": "120-250" },
+  { "SIZE (INCHES)": "48x36", "SIZE (MM)": "1200x900", "MAX FEED SIZE (MM)": 800, "CSS RANGE (MM)": "75-200", "POWER (HP)": "125-150", "CAPACITY (TPH)": "180-350" }
+]
+
+Important: Do not modify any other product objects in the file. Only update these two.
+Your Deliverable:
+To confirm you have successfully completed this focused update, please provide the full code for the updated "Single Toggle Jaw Crusher" and "Double Toggle Jaw Crusher" product objects from the products.ts file.

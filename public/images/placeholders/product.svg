@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" style="background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);">
+  <!-- Industrial Equipment Placeholder -->
+  <rect x="50" y="50" width="300" height="200" fill="#64748b" stroke="#475569" stroke-width="3" rx="12"/>
+  <rect x="70" y="70" width="260" height="160" fill="#94a3b8" rx="8"/>
+  
+  <!-- Equipment Base -->
+  <rect x="80" y="180" width="240" height="40" fill="#374151" rx="6"/>
+  <rect x="90" y="220" width="220" height="20" fill="#1f2937" rx="4"/>
+  
+  <!-- Central Mechanism -->
+  <circle cx="200" cy="150" r="40" fill="#6366f1" stroke="#4f46e5" stroke-width="3"/>
+  <circle cx="200" cy="150" r="20" fill="#4338ca"/>
+  
+  <!-- Side Components -->
+  <rect x="120" y="120" width="25" height="60" fill="#ef4444" rx="4"/>
+  <rect x="255" y="120" width="25" height="60" fill="#ef4444" rx="4"/>
+  
+  <!-- Feed Chute -->
+  <path d="M 180 80 L 220 80 L 210 120 L 190 120 Z" fill="#f59e0b" stroke="#d97706" stroke-width="2"/>
+  
+  <!-- Discharge Chute -->
+  <path d="M 190 180 L 210 180 L 220 220 L 180 220 Z" fill="#10b981" stroke="#059669" stroke-width="2"/>
+  
+  <!-- Industrial Symbol -->
+  <g transform="translate(185, 135)">
+    <path d="M 0 -15 L 10 -5 L 10 5 L 0 15 L -10 5 L -10 -5 Z" fill="#ffffff" stroke="#4338ca" stroke-width="2"/>
+    <circle cx="0" cy="0" r="3" fill="#4338ca"/>
+  </g>
+  
+  <!-- Corner Branding -->
+  <text x="350" y="280" text-anchor="end" fill="#64748b" font-family="Arial, sans-serif" font-size="12" font-weight="bold">VTIS</text>
+</svg>

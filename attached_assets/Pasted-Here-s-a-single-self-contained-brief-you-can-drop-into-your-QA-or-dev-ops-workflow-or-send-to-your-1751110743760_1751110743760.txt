@@ -1,0 +1,49 @@
+Here’s a single, self-contained brief you can drop into your QA or dev-ops workflow (or send to your agent) to systematically audit before you go live:
+
+⸻
+
+Audit Brief: Solutions/Industries Page UI & UX
+
+Goal: Verify that the revamped Solutions/Industries page meets all design, accessibility, performance, and quality standards before hosting.
+
+	1.	Responsiveness & Layout
+	•	Inspect on mobile, tablet and desktop breakpoints.
+	•	Rotate devices (portrait ↔ landscape) and confirm nothing shifts or overlaps.
+	•	Check grid collapse and stacking of industry cards.
+	2.	Accessibility
+	•	Tab through all interactive elements (cards, “Learn More,” contact links) — focus states must be obvious.
+	•	Verify each industry card has an aria-label (e.g. “Learn more about Mining Operations”).
+	•	Ensure color-contrast ratios ≥4.5:1 for text over images/backgrounds.
+	3.	Images & Assets
+	•	Industry cards: background images set up for lazy-loading.
+	•	Placeholder or “Coming Soon” state if image fails to load.
+	•	Check that uploaded images maintain correct aspect ratio and resolution.
+	4.	Performance
+	•	Run Lighthouse audit: LCP <2.5s, CLS <0.1, TBT minimal.
+	•	Confirm CSS/JS bundles are minified; defer non-critical scripts.
+	•	Validate HTTP caching headers for static assets.
+	5.	Cross-Browser QA
+	•	Spot-test in Chrome, Firefox, Safari, Edge (latest and at least one older major version).
+	•	Validate graceful degradation in legacy or mobile browsers.
+	6.	Interactions & Feedback
+	•	Hover/focus states on desktop: slight scale/shadow.
+	•	Touch targets ≥44×44px on mobile.
+	•	If any panels fetch data dynamically, ensure skeleton loaders/spinners are in place.
+	7.	Content & Links
+	•	Headings follow H1→H2→H3 hierarchy.
+	•	“Learn More” buttons on each card point to the correct anchor or /contact-us.
+	•	No 404s or broken links.
+	8.	SEO & Deep Linking
+	•	Meta tags (title, description, OG & Twitter) present and accurate.
+	•	Each industry card’s slug matches its anchor id for direct links.
+	9.	Analytics & Tracking
+	•	Track click events on cards and CTAs with your analytics tool.
+	•	Verify page-view tags fire on both main page and any sub-sections.
+	10.	Security & Compliance
+
+	•	No console errors or CSP violations.
+	•	Any third-party scripts load only after user consent if required.
+
+⸻
+
+Deliverable: A pass/fail checklist with screenshots for any failures, plus suggested fixes for each issue.

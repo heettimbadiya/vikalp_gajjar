@@ -1,0 +1,68 @@
+Excellent work on the audit and cleanup plan. Once you have completed the backend refactoring, the next major task is to enrich our product detail pages with detailed technical specifications. We want to present this data in a clean, professional, and easy-to-read format.
+Your goal is to update the product data model and then render this new data in a well-styled table on the product detail page.
+Step 1: Update the Product Data Model
+You need to update our data file (e.g., /data/products.ts) to include the new, detailed specifications. The structure needs to be flexible to handle two types of specification tables.
+ * For products with multiple models (like the Double Toggle Jaw Crusher): Use a spec_models array, where each object is a specific model.
+ * For other products: Use a simple spec_table array of key-value pairs.
+Here is the updated structure you should use. I have populated the Double Toggle Jaw Crusher for you as a complete example.
+Action: Update your product data file using this new structure.
+// In /data/products.ts
+
+// (Your existing product data structure)
+// Add these new optional fields:
+// spec_intro?: string;
+// spec_models?: Record<string, string | number>[];
+// spec_table?: { name: string; value: string }[];
+// disclaimer?: string;
+
+
+export const products = [
+  {
+    name: "Double Toggle Jaw Crusher",
+    slug: "double-toggle-jaw-crusher",
+    category: "Crushers",
+    image: "/images/products/jaw-crusher-1.jpg",
+    description: "The Double Toggle Jaw Crusher is designed for high-performance primary crushing in the toughest applications...",
+    spec_intro: "Specifications for the Double Toggle Jaw Crusher vary by model size. Please see the detailed breakdown below.",
+    disclaimer: "Specifications are subject to change without notice. All data is approximate and indicative; performance depends on site conditions...",
+    spec_models: [
+      { Size: '16 x 09', 'Size (mm)': '400 x 225', 'Max Feed Size (mm)': 175, 'CSS Range (mm)': '12 - 20', 'Power (HP)': '20 - 30', 'Capacity (TPH)': '12 - 20', RPM: 375 },
+      { Size: '20 x 12', 'Size (mm)': '500 x 300', 'Max Feed Size (mm)': 250, 'CSS Range (mm)': '16 - 40', 'Power (HP)': '25 - 40', 'Capacity (TPH)': '16 - 40', RPM: 350 },
+      { Size: '24 x 12', 'Size (mm)': '600 x 300', 'Max Feed Size (mm)': 300, 'CSS Range (mm)': '20 - 60', 'Power (HP)': '30 - 45', 'Capacity (TPH)': '25 - 60', RPM: 330 },
+      // ...add all other models from the HTML table here
+      { Size: '48 x 36', 'Size (mm)': '1200 x 900', 'Max Feed Size (mm)': 725, 'CSS Range (mm)': '48 - 275', 'Power (HP)': '150 - 200', 'Capacity (TPH)': '48 - 275', RPM: 250 }
+    ]
+  },
+  {
+    name: "Vertical Shaft Impact (VSI) Crusher",
+    slug: "vertical-shaft-impact-vsi-crusher",
+    category: "Crushers",
+    image: "/images/products/vsi-crusher.jpg",
+    description: "The VSI crusher is essential for producing high-quality cubical-shaped aggregates and manufactured sand...",
+    spec_intro: "Detailed specifications for the VSI Crusher vary by model and capacity. For precise figures, please consult our technical experts.",
+    disclaimer: "Specifications are subject to change without notice...",
+    spec_table: [
+        { name: 'Capacity (TPH)', value: '[e.g., 50 - 500 TPH]' },
+        { name: 'Max Feed Size', value: '[e.g., 50 - 100 mm]' },
+        { name: 'Power (kW)', value: '[e.g., 75 - 400 kW]' },
+        { name: 'Product Quality', value: '[e.g., High cubicity, manufactured sand]' }
+    ]
+  },
+  // ... Add all other products with their respective spec_table data
+];
+
+Step 2: Render the Specifications on the Product Detail Page
+Now, update your product detail page component (app/products/[slug]/page.tsx) to display this new data.
+Action: Implement conditional rendering for the specification tables.
+ * The component should check which type of specification data is available for the product.
+ * If product.spec_models exists: Render a detailed, multi-column table.
+   * The table headers should be the keys from the first object in the spec_models array.
+   * Map over the spec_models array to create a table row <tr> for each model.
+ * If product.spec_table exists: Render a simple two-column key-value table.
+   * The first column is for the name and the second is for the value.
+ * Styling: Use Tailwind CSS to style the tables to be clean, professional, and responsive. Add zebra-striping (striped class from your HTML) for readability.
+ * Text: Display the spec_intro text before the table and the disclaimer text after the table.
+Your Deliverable:
+Once complete, please provide the updated code for the following two files for review:
+ * /data/products.ts (showing the new data structure for at least two products).
+ * app/products/[slug]/page.tsx (showing the new component logic for rendering the tables).

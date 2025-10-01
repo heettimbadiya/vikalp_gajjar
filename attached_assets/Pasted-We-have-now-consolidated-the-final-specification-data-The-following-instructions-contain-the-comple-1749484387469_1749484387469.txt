@@ -1,0 +1,163 @@
+We have now consolidated the final specification data. The following instructions contain the complete, merged data from all specification files. This is the final and definitive source of truth for all website content.
+Your task is to replace the entire existing product data with this new, comprehensive data set. Afterwards, you will integrate product images and verify that the backend API processes this final data correctly.
+Step 1: Implement the Final, Merged Product Data
+Action:
+ * Go to the data file at /data/products.ts.
+ * Delete the entire contents of the products array.
+ * Replace it with the following complete code block. This new array contains 9 distinct product lines, including the now-separate Double and Single Toggle Jaw Crushers.
+// In /data/products.ts - REPLACE the existing products array with this FINAL version:
+
+export const products: Product[] = [
+  {
+    id: 1,
+    slug: "double-toggle-jaw-crusher",
+    name: "Double Toggle Jaw Crusher",
+    category: "Crushers",
+    image: "/images/products/placeholder.jpg",
+    description: "Engineered for the most demanding primary crushing applications, the Double Toggle Jaw Crusher provides maximum leverage to crush the hardest materials with minimal wear.",
+    benefits: ["Superior performance on abrasive rock", "Reduced wear on jaw plates", "Consistent product shape", "Extremely robust and reliable"],
+    applications: ["Primary crushing for Granite & Basalt", "Mining Operations (Iron, Bauxite)", "High-capacity Quarries"],
+    spec_models: [
+      { "Size (inches)": "16x09", "Size (mm)": "400x225", "Max Feed Size (mm)": 175, "CSS Range (mm)": "12-20", "Power (HP)": "20-30", "Capacity (TPH)": "12-20", "Toggle Type": "Double", RPM: 375 },
+      { "Size (inches)": "20x12", "Size (mm)": "500x300", "Max Feed Size (mm)": 250, "CSS Range (mm)": "16-40", "Power (HP)": "25-40", "Capacity (TPH)": "16-40", "Toggle Type": "Double", RPM: 350 },
+      { "Size (inches)": "24x12", "Size (mm)": "600x300", "Max Feed Size (mm)": 300, "CSS Range (mm)": "20-60", "Power (HP)": "30-45", "Capacity (TPH)": "25-60", "Toggle Type": "Double", RPM: 330 },
+      { "Size (inches)": "30x15", "Size (mm)": "750x375", "Max Feed Size (mm)": 325, "CSS Range (mm)": "28-85", "Power (HP)": "35-50", "Capacity (TPH)": "28-85", "Toggle Type": "Double", RPM: 325 },
+      { "Size (inches)": "36x24", "Size (mm)": "900x600", "Max Feed Size (mm)": 500, "CSS Range (mm)": "35-125", "Power (HP)": "80-100", "Capacity (TPH)": "35-125", "Toggle Type": "Double", RPM: 250 }
+    ]
+  },
+  {
+    id: 2,
+    slug: "single-toggle-jaw-crusher",
+    name: "Single Toggle Jaw Crusher",
+    category: "Crushers",
+    image: "/images/products/placeholder.jpg",
+    description: "Our Single Toggle Jaw Crusher is a versatile and cost-effective solution for primary crushing, offering high throughput and a simple, robust design for easy maintenance.",
+    benefits: ["High throughput and efficiency", "Simple design for easy maintenance", "Versatile for various applications", "Cost-effective crushing"],
+    applications: ["Contract Crushing", "Recycling (Concrete, Asphalt)", "Small to Medium Quarries"],
+    spec_models: [
+      { "Size (inches)": "16x10", "Size (mm)": "400x250", "Max Feed Size (mm)": 200, "CSS Range (mm)": "20-60", "Power (HP)": "25-30", "Capacity (TPH)": "20-55" },
+      { "Size (inches)": "20x12", "Size (mm)": "500x300", "Max Feed Size (mm)": 250, "CSS Range (mm)": "25-75", "Power (HP)": "30-40", "Capacity (TPH)": "30-70" },
+      { "Size (inches)": "24x15", "Size (mm)": "600x375", "Max Feed Size (mm)": 300, "CSS Range (mm)": "30-100", "Power (HP)": "40-50", "Capacity (TPH)": "40-90" },
+      { "Size (inches)": "30x20", "Size (mm)": "750x500", "Max Feed Size (mm)": 400, "CSS Range (mm)": "40-125", "Power (HP)": "60-75", "Capacity (TPH)": "60-150" }
+    ]
+  },
+  {
+    id: 3,
+    slug: "inclined-vibrating-screens",
+    name: "Inclined Vibrating Screens",
+    category: "Screening",
+    image: "/images/products/placeholder.jpg",
+    description: "Heavy-duty inclined vibrating screens designed for efficient classification and sizing of various materials in demanding environments.",
+    benefits: ["High screening efficiency", "Robust construction", "Low maintenance", "Versatile screen media options"],
+    applications: ["Aggregate sizing", "Coal screening", "Sand and gravel processing", "Ore screening"],
+    spec_models: [
+      { Model: "VTIS 1", "Deck Size (mm)": "1200x3000", "No. of Decks": 2, "Capacity (TPH)": "60–120", "Motor Power (kW)": 11 },
+      { Model: "VTIS 2", "Deck Size (mm)": "1500x4000", "No. of Decks": 3, "Capacity (TPH)": "100–180", "Motor Power (kW)": 15 },
+      { Model: "VTIS 3", "Deck Size (mm)": "1800x4800", "No. of Decks": 3, "Capacity (TPH)": "150–250", "Motor Power (kW)": 22 }
+    ]
+  },
+  {
+    id: 4,
+    slug: "grizzly-screens",
+    name: "Grizzly Screens (Scalping)",
+    category: "Screening",
+    image: "/images/products/placeholder.jpg",
+    description: "Engineered for heavy-duty pre-screening and scalping to remove oversized materials before primary crushing, ensuring optimal crusher performance.",
+    benefits: ["Effective removal of oversized materials", "Robust bar construction", "Minimal maintenance", "Improved crusher efficiency"],
+    applications: ["Primary scalping in quarries", "Debris removal in recycling", "Pre-screening for jaw crushers"],
+    spec_models: [
+      { Model: "VTG 1", "Deck Size (mm)": "1000x2500", "No. of Decks": 1, "Capacity (TPH)": "60–120", "Motor Power (kW)": 7.5 },
+      { Model: "VTG 2", "Deck Size (mm)": "1200x3000", "No. of Decks": 1, "Capacity (TPH)": "100–180", "Motor Power (kW)": 11 },
+      { Model: "VTG 3", "Deck Size (mm)": "1500x4000", "No. of Decks": 1, "Capacity (TPH)": "150–250", "Motor Power (kW)": 15 }
+    ]
+  },
+  {
+    id: 5,
+    slug: "hsi-impactors",
+    name: "HSI Impactors",
+    category: "Crushers",
+    image: "/images/products/placeholder.jpg",
+    description: "High-performance horizontal shaft impact crushers for secondary and tertiary crushing, producing superior cubical product shape.",
+    benefits: ["Excellent product shape", "High reduction ratio", "Adjustable crushing chamber", "Efficient for recycled materials"],
+    applications: ["Secondary aggregate crushing", "Concrete & asphalt recycling", "Limestone crushing"],
+    spec_models: [
+      { Model: "HSI 800x600", "Max Feed Size (mm)": 150, "Throughput (TPH)": "50–100", "Motor Power (kW)": 75 },
+      { Model: "HSI 800x1000", "Max Feed Size (mm)": 200, "Throughput (TPH)": "80–150", "Motor Power (kW)": 110 },
+      { Model: "HSI 1200x1000", "Max Feed Size (mm)": 250, "Throughput (TPH)": "120–200", "Motor Power (kW)": 160 }
+    ]
+  },
+  {
+    id: 6,
+    slug: "screw-sand-washers",
+    name: "Screw Sand Washers",
+    category: "Washing",
+    image: "/images/products/placeholder.jpg",
+    description: "Efficient screw sand washers for cleaning and dewatering sand and fine aggregates, featuring spiral classifier technology.",
+    benefits: ["Excellent washing efficiency", "Low water consumption", "Minimal fine material loss", "Robust construction"],
+    applications: ["Sand washing in aggregate plants", "Silica sand processing", "Construction sand production"],
+    spec_models: [
+      { Model: "SW6 Single", "Screw Length (m)": 6, "Throughput (TPH)": "30–60", "Motor Power (kW)": 11 },
+      { Model: "SW9 Single", "Screw Length (m)": 9, "Throughput (TPH)": "60–100", "Motor Power (kW)": 15 },
+      { Model: "SW9 Double", "Screw Length (m)": 9, "Throughput (TPH)": "100–150", "Motor Power (kW)": 22 }
+    ]
+  },
+  {
+    id: 7,
+    slug: "bucket-sand-classifiers",
+    name: "Bucket Sand Classifiers",
+    category: "Washing",
+    image: "/images/products/placeholder.jpg",
+    description: "Advanced bucket wheel sand classifiers designed to maximize fine sand recovery while providing excellent dewatering performance.",
+    benefits: ["High fine sand recovery rates", "Excellent dewatering", "Automated controls", "Reduced maintenance"],
+    applications: ["Fine sand recovery", "Sand classification and dewatering", "Tailings management"],
+    spec_models: [
+      { Model: "BSC-50", "Wheel Diameter (m)": 2.5, "Bucket Width (mm)": 600, "Capacity (TPH)": "30-60", "Power (kW)": 5.5 },
+      { Model: "BSC-100", "Wheel Diameter (m)": 3.0, "Bucket Width (mm)": 800, "Capacity (TPH)": "60-100", "Power (kW)": 7.5 },
+      { Model: "BSC-150", "Wheel Diameter (m)": 3.5, "Bucket Width (mm)": 1000, "Capacity (TPH)": "100-150", "Power (kW)": 11 }
+    ]
+  },
+  {
+    id: 8,
+    slug: "hydrocyclone-sand-classifiers",
+    name: "Hydrocyclone Sand Classifiers",
+    category: "Washing",
+    image: "/images/products/placeholder.jpg",
+    description: "High-efficiency hydrocyclone classifiers utilizing centrifugal force for precise fine particle separation with minimal energy use.",
+    benefits: ["Precise particle separation", "High efficiency", "Compact design", "Maintenance-free"],
+    applications: ["Fine particle classification", "Slurry thickening", "Industrial water treatment"],
+    spec_models: [
+      { Model: "HC-250", "Cyclone Diameter (mm)": 250, "Capacity (m3/hr)": "20-40", "Cut Size (microns)": "40-100", "Pressure (MPa)": "0.05-0.3" },
+      { Model: "HC-350", "Cyclone Diameter (mm)": 350, "Capacity (m3/hr)": "40-100", "Cut Size (microns)": "50-150", "Pressure (MPa)": "0.05-0.25" },
+      { Model: "HC-500", "Cyclone Diameter (mm)": 500, "Capacity (m3/hr)": "100-300", "Cut Size (microns)": "75-200", "Pressure (MPa)": "0.04-0.2" }
+    ]
+  },
+  {
+    id: 9,
+    slug: "vsi-sand-washers",
+    name: "VSI Sand Washers (CubiSand)",
+    category: "Washing",
+    image: "/images/products/placeholder.jpg",
+    description: "Advanced VSI sand washers for producing high-quality manufactured sand, combining crushing and washing in a single unit.",
+    benefits: ["Superior sand shape (high cubicity)", "Integrated crushing and washing", "Reduced clay content", "Energy-efficient operation"],
+    applications: ["Manufactured sand production", "Sand shape improvement", "Concrete sand preparation"],
+    spec_models: [
+      { Model: "CubiSand 1", "Throughput (TPH)": "50–75", "Motor Power (kW)": 45 },
+      { Model: "CubiSand 2", "Throughput (TPH)": "75–100", "Motor Power (kW)": "2x37" },
+      { Model: "CubiSand 3", "Throughput (TPH)": "100–150", "Motor Power (kW)": "2x55" },
+      { Model: "CubiSand 4", "Throughput (TPH)": "150–200", "Motor Power (kW)": "2x75" }
+    ]
+  }
+];
+
+Step 2: Integrate Product Images
+As discussed, this step requires you (the user) to upload your final product images to the /public/images/products/ folder in Replit.
+Action (for the agent): Once the images are uploaded, update the image path for each of the 9 product objects in the data file above to point to the correct file (e.g., from /images/products/placeholder.jpg to /images/products/double-toggle-jaw-crusher.jpg).
+Step 3: Critical Backend Verification
+After this final data update, you must confirm that our AI-First API correctly processes the new, merged information.
+Action:
+ * Trigger the API endpoint for one of the newly separated products: /api/products/double-toggle-jaw-crusher.
+ * Examine the JSON-LD output from the API.
+Your Deliverable:
+To confirm this final data implementation is complete and the backend is perfectly aligned, please provide the following:
+ * A confirmation that the products.ts file has been replaced with the new, final data block.
+ * The "model" array from the JSON-LD output for the /api/products/double-toggle-jaw-crusher endpoint. This will prove that the backend is correctly transforming the final specification data.

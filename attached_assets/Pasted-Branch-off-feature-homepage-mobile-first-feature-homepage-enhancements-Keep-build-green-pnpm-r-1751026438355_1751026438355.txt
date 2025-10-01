@@ -1,0 +1,35 @@
+Branch off feature/homepage-mobile-first → feature/homepage-enhancements  
+Keep build green (`pnpm run build && pnpm test`) after each commit  
+
+## 1. Section 2 “Industries We Serve”  
+- Change background from `#F3F4F6` → `#EDF2F7` (slightly warmer light gray)  
+- Add **autoplay carousel** behavior: scroll through the three industry links every 3 seconds, loop infinitely  
+- Ensure carousel speed is increased (autoplay interval 3000ms, transition 300ms)  
+
+## 2. Section 6 “Featured Products” Carousel  
+- Increase autoplay speed to match Section 2 (interval 3000ms, transition 300ms)  
+- Reduce gap between cards to `1rem` on mobile, `1.5rem` on desktop  
+- Add subtle page indicator dots beneath carousel  
+
+## 3. Improve Spacing Between Sections 6, 7, 8  
+- Insert new Section “Why VTIS Industrial?” between them  
+  - Background: `#FFFFFF` with top & bottom padding `4rem`  
+  - Three icon-plus-text features in a responsive grid (e.g. “Local Support,” “30 Years’ Expertise,” “Worldwide Delivery”)  
+  - Short line of customer-focused copy  
+
+## 4. Section 4 “Tagline + Copy” SEO & AI Content Upgrade  
+- Replace existing copy with more keyword-rich text:  
+  > **Power your plant with VTIS Industrial’s premium crushing & screening solutions.**  
+  > “Explore our durable, energy-efficient jaw crushers, impactors, and vibratory screens—engineered for reliability and maximum throughput.”  
+- Add a hidden `<script type="application/ld+json">` block with Product + FAQ JSON-LD for the homepage as a general “Organization” schema  
+
+## 5. Restore Missing Product Images  
+- Audit all `/images/products` references in each product page  
+- For any missing `src` or broken path, add fallback to `<picture>` with AVIF + JPEG fallback  
+- Ensure each product’s gallery renders at least 3 high-resolution images with `loading="lazy"`  
+
+## 6. Tests & Performance  
+- Update visual/regression tests for new section structure and carousel behavior  
+- Run Lighthouse (`npm run lighthouse`) to verify no regressions in LCP/CLS/INP  
+
+Please implement these UI enhancements and content updates across all mobile & desktop breakpoints, then commit each major block of work separately. ```

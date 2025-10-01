@@ -1,0 +1,82 @@
+Excellent work on creating the product page template. The layout and structure are professional and exactly what we need.
+Now, our critical task is to populate this template with the final marketing content and the detailed technical data for all 8 of our product lines.
+Step 1: Update the Central Data Source (data/products.ts)
+Your first step is to update our central data file with the new, accurate information. You will use the following detailed structure for each product.
+Action: Go to your data/products.ts file and update the products array. Each product object must follow this interface. I have provided the complete, final content for the first two products as a perfect example.
+// In /data/products.ts
+
+export interface Product {
+  id: number;
+  slug: string; // e.g., "jaw-crushers-vtis-series"
+  name: string; // The full H1 title, e.g., "Jaw Crushers (VTIS Series)"
+  category: string; // For the badge, e.g., "Crushers"
+  image: string; // Placeholder image path
+  description: string; // The main marketing description
+  benefits: string[]; // List of key benefits
+  applications: string[]; // List of common applications
+  spec_models: Record<string, string | number>[]; // The detailed spec table data
+}
+
+export const products: Product[] = [
+  {
+    id: 1,
+    slug: "jaw-crushers-vtis-series",
+    name: "Jaw Crushers (VTIS Series)",
+    category: "Crushers",
+    image: "/images/products/jaw-crusher.jpg",
+    description: "Our VTIS Series Jaw Crushers are the cornerstone of primary crushing operations, engineered for maximum uptime and reliability in the most demanding environments. They provide exceptional performance in processing hard, abrasive rock and recycling materials.",
+    benefits: [
+      "High throughput capacity for maximum productivity",
+      "Robust construction for long operational life",
+      "Optimized jaw plates for efficient, consistent crushing",
+      "Designed for simple maintenance to reduce downtime"
+    ],
+    applications: [
+      "Hard Rock Quarries",
+      "Aggregate Production for Infrastructure",
+      "Mining Operations",
+      "Demolition & Large-Scale Recycling"
+    ],
+    spec_models: [
+      { Model: 'VTIS 30x20', 'Feed Opening (mm)': '760x500', 'Max Feed Size (mm)': 450, 'Throughput (TPH)': '45–75', 'Motor Power (kW)': 45 },
+      { Model: 'VTIS 36x28', 'Feed Opening (mm)': '900x700', 'Max Feed Size (mm)': 550, 'Throughput (TPH)': '85–130', 'Motor Power (kW)': 75 },
+      { Model: 'VTIS 42x8', 'Feed Opening (mm)': '1050x200', 'Max Feed Size (mm)': 150, 'Throughput (TPH)': '100–150', 'Motor Power (kW)': 55 }
+    ]
+  },
+  {
+    id: 2,
+    slug: "inclined-vibrating-screens",
+    name: "Inclined Vibrating Screens",
+    category: "Screening",
+    image: "/images/products/inclined-screen.jpg",
+    description: "Our high-efficiency Inclined Vibrating Screens are designed for precise material separation and sizing. Built for durability, they are essential for aggregate plants, mining, and recycling facilities to ensure consistent product quality.",
+    benefits: [
+      "Accurate particle size classification",
+      "High screening efficiency across multiple decks",
+      "Durable screen media for long wear life",
+      "Engineered for balanced, low-vibration operation"
+    ],
+    applications: [
+      "Final Product Sizing",
+      "Scalping and Rip-Rap Separation",
+      "Sand and Gravel Processing",
+      "Mineral Screening"
+    ],
+    spec_models: [
+      { Model: 'VTIS 1', 'Deck Size (mm)': '1200x3000', 'No. of Decks': 2, 'Capacity (TPH)': '60–120', 'Motor Power (kW)': 11 },
+      { Model: 'VTIS 2', 'Deck Size (mm)': '1500x4000', 'No. of Decks': 3, 'Capacity (TPH)': '100–180', 'Motor Power (kW)': 15 },
+      { Model: 'VTIS 3', 'Deck Size (mm)': '1800x4800', 'No. of Decks': 3, 'Capacity (TPH)': '150–250', 'Motor Power (kW)': 22 }
+    ]
+  },
+  // ... Please continue this pattern for the remaining 6 product categories.
+];
+
+Step 2: Connect Data to the Page Template
+Your next step is to ensure your product detail page at app/products/[slug]/page.tsx correctly displays all this new information.
+Action:
+ * The page should use the slug from the URL to find the correct product object in the updated products.ts file.
+ * Dynamically render all the content: name, image, description, the list of benefits, the list of applications, and finally, the spec_models data in the technical specification table.
+Your Deliverable:
+Please confirm once you have:
+ * Updated the /data/products.ts file with the complete data for all 8 product lines.
+ * Verified that navigating to each product's URL (e.g., /products/hsi-impactors) correctly displays all of its unique content and its specific specification table.

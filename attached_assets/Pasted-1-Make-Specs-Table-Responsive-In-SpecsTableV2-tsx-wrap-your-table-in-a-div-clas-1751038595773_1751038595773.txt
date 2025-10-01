@@ -1,0 +1,41 @@
+1. **Make Specs Table Responsive**  
+   - In `SpecsTableV2.tsx`, wrap your `<table>` in a `<div className="overflow-x-auto">` (if it isn’t already).  
+   - Remove any fixed column widths; instead use Tailwind’s responsive classes, e.g.:  
+     ```jsx
+     <th className="px-4 py-3 min-w-[120px] text-left …">
+     ```  
+   - On mobile (<640px), collapse less-critical columns behind a “More…” toggle or hide them with `hidden sm:table-cell`.
+
+2. **Fix Product Carousel Layout**  
+   - In your carousel component (home & product pages), ensure each slide uses a fixed flex basis:  
+     ```jsx
+     <div className="flex-none w-64 sm:w-72 lg:w-80">…</div>
+     ```  
+   - Add consistent padding/margin so all cards are the same height.  
+   - Test autoplay and per-slide speed settings (`autoplaySpeed`, `slidesToShow`) so they scroll smoothly without cutting cards.
+
+3. **Restore Missing Images**  
+   - In each product page under `public/images/products/<slug>/`, import the matching image by slug:  
+     ```jsx
+     <img src={`/images/products/${slug}/${slug}.jpg`} … />
+     ```  
+   - Bulk-add any new assets to `public/images/products/<slug>/` and update `imageUrl` in your data source.
+
+4. **Re-enable FAQs on All Detail Pages**  
+   - Create a reusable `MiniFaqAccordion` component and include it in **every** `src/pages/products/[slug].tsx` beneath the “FAQs” anchor.  
+   - Feed it the per-product Q&A object (or a fallback “Coming soon!” if none defined).
+
+5. **“Industries We Serve” Blue Strip**  
+   - In `Home.tsx` (or wherever Section 2 lives), add `className="bg-blue-600 text-white"` to the container div.  
+   - Adjust padding (`py-4`) and ensure the icons/text retain proper contrast.
+
+6. **QA & Visual Regression**  
+   - Run `pnpm run build && pnpm test`.  
+   - On desktop & mobile, verify:  
+     - Specs tables scroll or collapse gracefully  
+     - Carousels show equal-sized cards and autoplay correctly  
+     - Every product card has an image and routes navigate properly  
+     - FAQs appear under the FAQ tab/section on every detail page  
+     - “Industries We Serve” strip now has the correct blue background  
+
+Commit each change with clear “fix:” or “feat:” messages, then merge to main and push live. Let’s get these UI bugs squashed!```

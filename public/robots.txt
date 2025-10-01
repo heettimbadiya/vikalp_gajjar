@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Allow: /llm.txt
+
+Sitemap: https://vtisindustrial.com/sitemap.xml

@@ -1,0 +1,62 @@
+On mobile the culprit is your CSS grid—by default it’s stacking each “pill” as its own row. To get the horizontal-scroll “pill” look you want, switch to a flex container on small screens:
+
+// components/SolutionsHero.tsx
+export default function SolutionsHero({ solutions }) {
+  return (
+    <section className="solutions-hero py-8 bg-gradient-to-r from-blue-700 to-blue-500 text-white">
+      <div className="container mx-auto px-4">
+        <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-center">
+          Explore Our Industry Solutions
+        </h2>
+-       <div className="solutions-grid overflow-x-auto snap-x snap-mandatory grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 px-2 scrollbar-hide">
++       <div
++         className="
++           solutions-grid
++           flex flex-nowrap gap-4   /* ← use flexbox on all screens */
++           sm:grid sm:grid-cols-2 lg:grid-cols-4  /* ← re-enable grid at ≥sm */
++           overflow-x-auto snap-x snap-mandatory px-2 scrollbar-hide
++         "
++       >
+          {solutions.map((sol) => (
+            <Link key={sol.slug} href={`/solutions/${sol.slug}`}>
+              <a
+                className="snap-center bg-white/20 hover:bg-white/30 text-white text-center py-3 rounded-full flex-1 whitespace-nowrap block focus:ring-2 focus:ring-white transition-all duration-300"
+                aria-label={`Go to ${sol.name} solutions`}
+              >
+                {sol.name}
+              </a>
+            </Link>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+Why this works:
+	•	flex flex-nowrap gap-4 on mobile ensures all pills sit in one row and can scroll horizontally.
+	•	At sm: and up, you fall back to your grid so desktop remains unchanged.
+
+⸻
+
+Adding “Turnkey Solutions”
+
+If you offer full turnkey installations, it absolutely belongs in your solutions lineup. Just:
+	1.	Update your data source (e.g. /data/solutions.json):
+
+[
+  { "name": "Mining & Aggregates",   "slug": "construction" },
+  { "name": "Sand Washing & M-Sand",  "slug": "sand-washing-m-sand" },
+  { "name": "Mobile & Modular Plants","slug": "mobile-modular-plants" },
+  { "name": "C&D Recycling",          "slug": "c-and-d-recycling" },
+
+
+
+	•	{ “name”: “Turnkey Solutions”,      “slug”: “turnkey-solutions” }
+]
+
+2. **Create** `src/pages/solutions/turnkey-solutions.tsx` (or in your CMS), and add a matching `<SolutionPage>`.
+
+3. **Rebuild/GetStaticProps** will automatically pick it up and add the new pill in your hero.
+
+With that in place, mobile pills will scroll beautifully in one line, and your new “Turnkey Solutions” tab appears right alongside the rest.

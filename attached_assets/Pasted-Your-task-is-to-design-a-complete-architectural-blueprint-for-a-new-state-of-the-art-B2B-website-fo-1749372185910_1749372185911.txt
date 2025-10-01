@@ -1,0 +1,37 @@
+Your task is to design a complete architectural blueprint for a new, state-of-the-art B2B website for a manufacturer of heavy industrial equipment. The design must be forward-looking for mid-2025, ensuring market leadership through technological superiority. The architecture must be powerful, scalable, and intelligently discoverable by both humans and AI models.
+Core Product Line:
+Your entire design should be centered around the following product portfolio. Use these products as concrete examples when designing database schemas, search functionalities, and interactive user experiences:
+ * Crushers: Single & Double Toggle Jaw Crusher, VSI & HSI Crusher
+ * Mobile Plants: Mobile Crushing Plant
+ * Screening & Feeding: Vibrating Screen, Vibrating Feeder
+ * Washing Equipment: Hydro Cyclone, Bucket, and Screw Sand Washers
+ * Conveying Systems: Static Belt, Mobile Belt, Radial Stacker, and Custom Conveyor Systems
+ * Complete Solutions: Turnkey Plant Solutions
+Part 1: Advanced Backend Architecture
+Design a proactive, event-driven backend core. This is the central nervous system of the business.
+Requirements:
+ * Intelligent Data Layer (The Foundation):
+   * Design a dual-database strategy. Propose a primary PostgreSQL database for transactions and a Vector Database (choose and justify from Pinecone, Weaviate, etc.).
+   * This layer must be designed to power advanced semantic search across all product documentation and specifications. For example, a user should be able to search for "a mobile crushing solution for abrasive granite under 150 TPH" and get relevant results.
+ * Event-Driven Architecture (The Communication Backbone):
+   * Architect the system around an event bus (e.g., AWS Kinesis or Google Pub/Sub). This will decouple services and ensure resilience.
+   * Map out the event flow for a "Request for Quote" on a "Turnkey Plant Solution," showing how it triggers notifications and actions asynchronously.
+ * GraphQL API (The Universal Interface):
+   * Define a GraphQL API as the single, flexible interface for all frontend data consumption. It should be designed to efficiently serve complex, nested data, such as a "Mobile Crushing Plant" with its specific "VSI Crusher" model and "Vibrating Screen" specifications in a single query.
+Part 2: Modern Frontend Architecture
+Design a fast, interactive, and intelligent user interface. We will not be integrating a chatbot. The focus is on AI-powered tools and superior user experience.
+Requirements:
+ * Framework & Component Strategy (The Structure):
+   * Choose between Next.js or SvelteKit as the primary frontend framework. Provide a strong justification for your choice based on performance, developer experience, and suitability for a content-rich B2B site.
+   * The UI must be built using Tailwind CSS and a headless, accessible component library like Radix UI (you can reference the shadcn/ui implementation style). Do not use rigid, class-based CSS frameworks like Bootstrap.
+ * AI-Powered User Experience (The Intelligence - No Chatbots):
+   * Design a Generative Search Interface. This is the primary replacement for a chatbot. It will be a sophisticated search bar where users can type the natural language queries mentioned above.
+   * Propose an AI-Driven Personalization strategy. For example, the homepage should dynamically feature a "Horizontal Shaft Impact (HSI) Crusher" for a user who has previously shown interest in limestone applications.
+ * High-Performance Visuals with WebAssembly (Wasm):
+   * Propose a plan to use WebAssembly to create a high-performance, interactive 3D product viewer.
+   * Select the "Double Toggle Jaw Crusher" as the pilot product for this feature. Describe how a user could manipulate the model in the browser to see its internal workings, providing a vastly superior experience to static images or videos.
+Final Deliverable:
+Produce a single, comprehensive architectural document that provides:
+ * A clear justification for all major technology choices (e.g., Next.js vs. SvelteKit, Pinecone vs. Weaviate).
+ * A high-level diagram illustrating how the frontend, GraphQL API, event bus, and databases all interact.
+ * A concise plan that demonstrates how this architecture directly serves the goal of selling complex industrial equipment online effectively and intelligently.

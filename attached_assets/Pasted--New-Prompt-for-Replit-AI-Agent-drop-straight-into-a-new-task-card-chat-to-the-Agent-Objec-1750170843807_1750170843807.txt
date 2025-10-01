@@ -1,0 +1,55 @@
+✨ New Prompt for Replit AI Agent
+
+(drop straight into a new task card / chat to the Agent)
+
+⸻
+
+Objective
+
+Replace the current “Complete Your Solution” block that appears on every product-detail page with a more engaging, image-rich “Recommended Equipment” carousel. Fix the empty-image issue (blank gradient tiles) and make the component reusable across the catalogue.
+
+⸻
+
+Pre-flight
+	•	Branch off feature/ai-seo-upgrade → feature/related-products-carousel
+	•	CI must stay green: pnpm run build && pnpm test
+
+⸻
+
+Tasks & Acceptance Tests
+
+#	Task	Details	Acceptance Test
+1	Refactor component	Rename components/related-products.tsx → components/RecommendedCarousel.tsx (keep index export). Accept props: currentSlug: string, limit?: number (default 6).	Visiting any /products/* page injects the new carousel in place of the old section.
+2	Image logic	a) Load product.image (primary) from DB/API.  b) If missing, fall back to /images/placeholders/product.svg (create once).  c) Remove the huge ⚙️ emoji background.	No grey/blank blocks; every card shows either a real image or the SVG placeholder.
+3	UI/UX upgrade	a) Horizontal scroll snap on mobile, 3-col grid on ≥ md.  b) Card gets subtle hover-lift (translate-y-1) + shadow.  c) Headline text → “Recommended Equipment”, sub-text → “Often paired with this product for a complete line.”	Visual regression screenshot shows new layout; passes Lighthouse a11y (< 2 contrast violations).
+4	Query logic	From /api/products?category={sameCategory}&exclude={currentSlug}&limit=limit (already exists). If fewer than limit, back-fill with top sellers (?sort=sales).	Devtools → Network tab: one GET call returns ≤ limit items, never includes the current product slug.
+5	Cross-page injection	Replace import in every page with new component via a codemod (scripts/replace-related-products.ts) → run in postinstall.	git grep "related-products" returns 0 matches after script runs.
+6	Skeleton & lazy loading	a) Show shimmering skeleton while fetch is pending.  b) <img loading="lazy" decoding="async">.	Throttled 3G refresh shows skeleton for ~500 ms before images load.
+7	Unit tests	Jest + React Testing Library: renders placeholder when no image, excludes current product, fetch called with correct params.	pnpm test --filter recommended-carousel passes 100 %.
+8 (stretch)	Optional “View All” CTA slides in after last card (intersection observer).	Only if time; fine to add // TODO comment.	
+
+
+⸻
+
+Deliverables (DoD)
+	•	All acceptance tests above pass.
+	•	No TS/ESLint errors.
+	•	CLS added by the new carousel ≤ 0.05 (Lighthouse).
+	•	Section text & link colors inherit existing design tokens.
+	•	Commit history is granular & conventional.
+
+⸻
+
+Copy Snippets
+
+### Headline  
+Recommended Equipment
+
+_After 30 years of plant design we’ve learned which machines work best together. These picks help you build a seamless flow._
+
+
+⸻
+
+⏱️  Time-box
+
+Aim for 90 min dev + 20 min tests / polish. Leave TODO (stretch) notes if you run long.

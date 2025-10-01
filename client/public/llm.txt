@@ -1,0 +1,10 @@
+https://vtis.replit.app/products/double-toggle-jaw-crusher|2025-06-17|capacity=125TPH;power=100HP
+https://vtis.replit.app/products/single-toggle-jaw-crusher|2025-06-17|capacity=350TPH;power=150HP
+https://vtis.replit.app/products/hsi-impactors|2025-06-17|capacity=400TPH;power=315HP
+https://vtis.replit.app/products/inclined-vibrating-screens|2025-06-17|capacity=500TPH;power=45HP
+https://vtis.replit.app/products/grizzly-screens|2025-06-17|capacity=800TPH;power=30HP
+https://vtis.replit.app/products/vibrating-feeders|2025-06-17|capacity=1000TPH;power=22HP
+https://vtis.replit.app/products/hydrocyclone-sand-classifiers|2025-06-17|capacity=180TPH;power=18HP
+https://vtis.replit.app/products/bucket-sand-classifiers|2025-06-17|capacity=200TPH;power=25HP
+https://vtis.replit.app/products/vsi-cubisand-sand-maker|2025-06-17|capacity=160TPH;power=240HP
+https://vtis.replit.app/products/screw-sand-washers|2025-06-17|capacity=180TPH;power=22HP

@@ -1,0 +1,23 @@
+Thank you for the initial plan. We have reviewed it and are providing a more detailed, finalized plan for the Initial Version of the project. Your previous plan to move advanced features to a "Later" stage is not aligned with our goals. The core objective is to build a forward-looking foundation from day one.
+Please discard the previous plan and start building the project according to these revised instructions.
+Part 1: Foundational Backend Architecture (Initial Build)
+The entire initial build must be based on the following advanced architecture. These are not optional add-ons; they are the core of the project.
+ * 1. Intelligent Data Layer: You will implement a dual-database strategy.
+   * Primary DB: Use PostgreSQL for core data (e.g., product details, captured leads).
+   * Vector DB: Use a vector database like Pinecone or Weaviate. You will immediately process our product list (Single Toggle Jaw Crushers, VSI Crushers, Conveyors, etc.) into vector embeddings and store them here. This is non-negotiable for the initial build.
+ * 2. API Standard: The backend will exclusively use a GraphQL API. This API will serve data to the frontend and will be the interface to the dual-database system.
+ * 3. Core Infrastructure: The backend will be built on a Serverless, Event-Driven Architecture (EDA). Set up the basic infrastructure using AWS Lambda (or a similar service) and an event bus like AWS Kinesis or Google Pub/Sub to handle simple events like LeadGenerated.
+Part 2: Modern Frontend Architecture (Initial Build)
+ * 1. Framework & UI: You will build the frontend using Next.js. The UI will be built with Tailwind CSS and unstyled component primitives from a library like Radix UI (shadcn/ui is an approved implementation pattern).
+ * 2. High-Performance Visuals: The architecture must support WebAssembly (Wasm) from the start. For the initial build, you will create a high-performance 3D product viewer for at least one key product, such as the "Double Toggle Jaw Crusher."
+Part 3: The Primary Goal: Interactive Query & Lead Capture
+This is the central feature of the initial website. We are replacing the online RFQ system with this intelligent lead capture mechanism. To be perfectly clear, this is NOT a conventional chatbot.
+Here is the user flow you will build:
+ * The Interface: The website's main search bar will be a prominent "Interactive Query" interface.
+ * User Query: A potential customer from anywhere in the world enters a complex, natural-language query. For example: "I need a mobile crushing plant that can process 150 tons per hour of abrasive granite for a project in a remote area."
+ * AI-Powered Response: Your system uses the GraphQL API and the Vector Database to instantly understand the query's intent and provide a rich response directly on the page, showcasing the relevant products (e.g., "Mobile Crushing Plant," "Vibrating Feeder").
+ * Intelligent Lead Capture: After providing the product information, the system will dynamically display a lead capture form within the results. The call to action will be context-aware. For example:
+   "Your query for a '150 TPH mobile plant for granite' is specific. For a precise configuration and technical consultation, please provide your details below. One of our experts from the relevant regional office will contact you."
+ * Action: When the user submits the form, a LeadGenerated event is fired on the backend, and the data is securely stored in our PostgreSQL database.
+Deliverable:
+Please confirm you understand this revised plan. Your first task is to initialize the Next.js project and the serverless backend project, establishing the connection to both PostgreSQL and the chosen Vector Database via the initial GraphQL schema.

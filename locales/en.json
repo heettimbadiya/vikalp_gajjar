@@ -1,0 +1,32 @@
+{
+  "specs": {
+    "title": "Technical Specifications",
+    "description": "Detailed parameters and recommended models",
+    "model": "Model",
+    "size": "Size",
+    "power": "Power",
+    "capacity": "Capacity",
+    "feed": "Feed Size",
+    "css": "CSS Range",
+    "throughput": "Throughput",
+    "rpm": "RPM",
+    "configuration": "Configuration",
+    "type": "Type",
+    "diameter": "Diameter",
+    "length": "Length",
+    "buckets": "Number of Buckets",
+    "lubrication": "Lubrication",
+    "motor": "Motor Type",
+    "deck": "Deck Configuration",
+    "units": {
+      "mm": "mm",
+      "in": "in", 
+      "ft": "ft",
+      "hp": "HP",
+      "kw": "kW",
+      "tph": "TPH",
+      "rpm": "RPM",
+      "m": "m"
+    }
+  }
+}

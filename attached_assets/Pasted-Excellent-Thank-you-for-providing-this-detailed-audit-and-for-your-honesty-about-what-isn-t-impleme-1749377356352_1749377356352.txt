@@ -1,0 +1,43 @@
+Excellent. Thank you for providing this detailed audit and for your honesty about what isn't implemented yet. This is exactly what I needed to see. This is a great foundation, and the code is well-structured.
+Let's review it together and make one critical refinement to perfect the architecture.
+Analysis and Review
+First, here's what looks good:
+ * ✅ Drizzle ORM Schema: Your use of Drizzle ORM is a great, modern choice. The schema is clear and well-defined.
+ * ✅ Separate Consumer Files: Creating two separate files (save-lead-consumer.ts and notify-sales-consumer.ts) is perfect. This shows a clear separation of concerns.
+ * ✅ Asynchronous Publishing: Using setImmediate to publish the event is a clever way to ensure the user gets a fast response without blocking the API.
+Now for the main architectural refinement.
+🏗️ The Core Architectural Refinement
+You have correctly identified the core issue in your code comment: // The lead should already be saved during the mutation...
+Currently, your API endpoint at /api/leads is doing two jobs:
+ * Saving the lead to the database.
+ * Publishing an event.
+The primary goal of our Event-Driven Architecture (EDA) is to make the API endpoint as fast and resilient as possible. Its only job should be to accept the request and pass it into the system by publishing an event. The actual work (saving to the DB, sending emails) should be handled by the backend consumers.
+We are going to make a small change to fully adopt this powerful pattern.
+Next Steps: The Refactoring Plan
+Please perform the following refactoring. This will align the code perfectly with our expert-level architecture.
+Step 1: Refactor the API Endpoint (server/routes.ts)
+In your app.post("/api/leads", ...) function, we will make it do less work.
+ * Action: Remove the line const lead = await storage.createLead(validatedData);.
+ * New Logic: The API endpoint should now only:
+   * Validate the incoming data (insertLeadSchema.parse(req.body)).
+   * Construct the leadEvent payload directly from the validated data.
+   * Publish the event to the eventBus.
+   * Immediately return a success response to the user.
+It no longer needs to wait for the database. This makes your API incredibly fast.
+Step 2: Activate the save-lead-consumer.ts
+This consumer now has a critical job.
+ * Action: Move the database logic into this file.
+ * New Logic: Inside the saveLeadToDatabase function, you will now add the actual database insertion code. It will receive the lead data from the event and be responsible for calling storage.createLead(event.data).
+Step 3: Update the Database Schema (shared/schema.ts)
+This is a minor but important fix.
+ * Action: Add the phone number to your Drizzle schema for the leads table. It looks like the data is being received but not stored. It should be a text field.
+// In shared/schema.ts
+export const leads = pgTable("leads", {
+  // ... all other fields
+  phone: text("phone"), // Add this line
+  // ...
+});
+
+Step 4: Confirm Frontend Cleanup
+Finally, please confirm that you have completed the frontend cleanup as you mentioned, and that all traces of the Interactive Query System and 3D Viewer have been removed from the code.
+This refactoring is a small change in code, but a major improvement in architecture that makes our system more robust and scalable. Once you've completed these steps, we'll have a truly expert-level foundation.

@@ -1,0 +1,52 @@
+~/workspace$ # Remove any existing remote (if needed)
+git remote remove origin 2>/dev/null || true
+
+# Add your GitHub repository
+git remote add origin https://github.com/VTechMakkers/Website.git
+
+# Verify the remote was added
+git remote -v\
+error: could not lock config file .git/config: File exists
+fatal: could not set 'remote.origin.url' to 'https://github.com/VTechMakkers/Website.git'
+> # Add all files to Git staging
+git add .
+
+# Check what will be committed
+git status
+error: unknown switch `#'
+usage: git remote [-v | --verbose]
+   or: git remote add [-t <branch>] [-m <master>] [-f] [--tags | --no-tags] [--mirror=<fetch|push>] <name> <url>
+   or: git remote rename [--[no-]progress] <old> <new>
+   or: git remote remove <name>
+   or: git remote set-head <name> (-a | --auto | -d | --delete | <branch>)
+   or: git remote [-v | --verbose] show [-n] <name>
+   or: git remote prune [-n | --dry-run] <name>
+   or: git remote [-v | --verbose] update [-p | --prune] [(<group> | <remote>)...]
+   or: git remote set-branches [--add] <name> <branch>...
+   or: git remote get-url [--push] [--all] <name>
+   or: git remote set-url [--push] <name> <newurl> [<oldurl>]
+   or: git remote set-url --add <name> <newurl>
+   or: git remote set-url --delete <name> <url>
+
+    -v, --[no-]verbose    be verbose; must be placed before a subcommand
+
+On branch main
+nothing to commit, working tree clean
+~/workspace$ 
+~/workspace$ 
+~/workspace$ # Commit everything with a descriptive message
+git commit -m "🚀 Complete VTech Makkers website with production infrastructure
+
+- Full React + TypeScript frontend with 11 product pages
+- Express.js backend with PostgreSQL database
+- Advanced video optimization (sub-500ms loading)
+- Comprehensive SEO with structured data
+- Mobile-first responsive design
+- Complete CI/CD pipeline with GitHub Actions
+- Production-ready infrastructure (ESLint, Prettier, security)
+- Legal compliance pages (Privacy Policy, Terms of Service)"
+On branch main
+nothing to commit, working tree clean
+~/workspace$ 
+~/workspace$ 
+~/workspace$ 
